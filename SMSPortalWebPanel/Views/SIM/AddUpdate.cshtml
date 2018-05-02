@@ -1,0 +1,62 @@
+﻿@using SMSPortalWebPanel.ViewModels
+@model SIMViewModel
+
+@section TitleSection{
+    ویرایش سیم کارت
+}
+@section ActiveGSM{active}
+
+@section HeaderSection{
+    <script type="text/javascript">
+        function goBack() {
+            var url = '@Url.Action("Index", "SIM")';
+            window.location.href = url;
+            return false;
+        }
+    </script>
+}
+@section ContentBody{
+    <div class="row">
+
+        <div class="col-lg-4">
+            <section class="panel">
+                <header class="panel-heading">
+                    ویرایش سیم کارت
+                </header>
+                <div class="panel-body">
+                    <form role="form" action="/SIM/Save" method="post">
+                        <div class="form-group">
+                            <label for="Number">شماره:</label>
+
+
+                            <input type="number" class="form-control" id="txtNumber" name="@Html.NameFor(m => Model.Number).ToString()" placeholder="09" value="@Model.Number">
+                            <p class="help-block">
+                                @Html.ValidationMessageFor(m => Model.Number)
+                            </p>
+
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="Port">پورت اتصال:</label>
+                            <input type="number" class="form-control" id="txtPort" name="@Html.NameFor(m => Model.Port).ToString()" placeholder="پورت اتصال را وارد نمایید" value="@Model.Port">
+                            <p class="help-block">
+                                @Html.ValidationMessageFor(m => Model.Port)
+                            </p>
+
+                        </div>
+                        <button type="submit" class="btn btn-info" name="@Html.NameFor(m => Model.Id).ToString()" value="@Model.Id">ثبت</button>
+                        <button type="submit" class="btn btn-danger" onclick="return goBack();"> بازگشت </button>
+                        <p class="help-block">@( Model._Result != null ? Model._Result : "")</p>
+
+                    </form>
+
+                </div>
+            </section>
+        </div>
+
+    </div>
+
+
+
+}

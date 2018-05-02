@@ -1,0 +1,269 @@
+﻿@using SMSPortalWebPanel.ViewModels
+@model CompanyViewModel
+
+@section TitleSection{
+    ویرایش سازمان
+}
+@section ActiveCompany{active}
+
+@section HeaderSection{
+
+    <link href="~/Content/datatables/dataTables.bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/plugins/datatables/jquery.dataTables.js"></script>
+    <script src="~/Scripts/plugins/datatables/dataTables.bootstrap.js"></script>
+<script src="~/Scripts/plugins/datatables/fnReloadAjax.js"></script>
+
+    <script src="~/Scripts/jquery.validate.js"></script>
+
+    <script type="text/javascript">
+
+
+        function goBack() {
+            var url = '@Url.Action("Index", "Company")';
+            window.location.href = url;
+            return false;
+        }
+
+        $(document).ready(function () {
+            $('#contactDT').dataTable();
+        });
+
+        var allContactTable;
+      
+        function getContactsDataFromDB(_id) {
+
+            if (allContactTable == null) {
+                waitingDialog.show('لطفا صبر کنید...');
+                $.ajax({
+                    type: "POST",
+                    url: "@Url.Action("getOutsideContacts", "Company")",
+                    datatype: "json",
+                    data: { companyId: _id },
+                    timeout: 10000,
+                    success: function (data) {
+                        body = "";
+                        var jsonData = JSON.parse(data);
+                        for (var i = 0; i < jsonData.length; i++) {
+                            var contact = jsonData[i];
+                            body += "<tr>" +
+                                          "<td style='display:none'><input type='hidden' value='"+contact.Id+"' name='newContactId' /></td>"+
+                                          "<td>" + contact.Name + "</td>" +
+                                          "<td>" + contact.Family + "</td>" +
+                                          "<td>" + contact.Email + "</td>" +
+                                          "<td><ul>";
+
+                            for (var j = 0 ; j < contact.Numbers.length; j++) {
+                                var Number = contact.Numbers[j];
+                                body += "<li>" + Number + "</li>";
+
+                            }
+
+                            body += "</ul></td>" +
+                                "<td><input type='checkbox' value='" + contact.Id + "'></td>" +
+                            "</tr>";
+
+                        }
+                        $('#allContactsBody').html(body);
+                        allContactTable = $('#allContactDT').dataTable();
+
+                        waitingDialog.hide()
+                    },
+                    error: function (data) {
+                        waitingDialog.hide();
+                    }
+
+                });
+            }
+        }
+
+        var selectedNewIds =[]; 
+
+        function addSelectedContact() {
+
+            allContactTable.$('tr').each(function (index, rowhtml) {
+                var checked = $('input[type="checkbox"]:checked', rowhtml).length;
+                $('#contactDT').dataTable().api().destroy();
+                if (checked == 1) {
+                    
+                    id = $("input:hidden", rowhtml).val();
+                    var found = $.inArray(id, selectedNewIds) > -1
+                    if (!found) {
+
+                        selectedNewIds.push(id)
+
+                        // Replace checkbox with remove button
+                        var index = rowhtml.innerHTML.indexOf('<input type="checkbox"');
+                        var row = rowhtml.innerHTML.substring(0, index);
+                        row += "<button type='button' class='btn btn-default btn-xs' onclick='removeContact('" + id + "')'><i class='fa fa-times'></i></button></td>";
+
+                        $('#contactBody').append("<tr>" + row + "</tr>");
+                    }
+                }
+                $('#contactDT').dataTable();
+
+            });
+            //$("input:checked", allContactTable.fnGetNodes()).each(function () {
+
+            //    ids.push($(this).val());
+            //    //    console.log($(this).val());
+            //});
+       
+        }
+
+       function removeContact(e ,id) {
+           // remove id from  array of selected Ids
+           selectedNewIds = jQuery.grep(selectedNewIds, function (value) {
+                return value != id;
+            });
+        
+           try {
+               e.closest('tr').remove();
+           }
+           catch (Err) {
+           }
+        }
+
+    </script>
+}
+@section ContentBody{
+    <div class="row">
+        <form role="form" action="/Company/Save" method="post">
+
+            <div class="col-lg-4">
+                <section class="panel">
+                    <header class="panel-heading">
+                        ویرایش سازمان
+                    </header>
+                    <div class="panel-body">
+
+                        <div class="form-group">
+                            <label for="@Html.NameFor(m => Model.Name).ToString()">نام:</label>
+                            <input type="text" class="form-control" id="txtNumber" name="@Html.NameFor(m => Model.Name).ToString()" placeholder="نام سازمان" value="@Model.Name">
+                            <p class="help-block">
+                                @Html.ValidationMessageFor(m => Model.Name)
+                            </p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="@Html.NameFor(m => Model.Number).ToString()">شماره:</label>
+                            <input type="text" class="form-control" id="txtNumber" name="@Html.NameFor(m => Model.Number).ToString()" placeholder="شماره های سازمان" value="@Model.Number">
+                            <p class="help-block">
+                                @Html.ValidationMessageFor(m => Model.Number)
+                            </p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="@Html.NameFor(m => Model.Address).ToString()">آدرس:</label>
+                            <input type="text" class="form-control" id="txtNumber" name="@Html.NameFor(m => Model.Address).ToString()" placeholder="آدرس سازمان" value="@Model.Address">
+                            <p class="help-block">
+                                @Html.ValidationMessageFor(m => Model.Address)
+                            </p>
+                        </div>
+
+                        <button type="submit" class="btn btn-info" name="@Html.NameFor(m => Model.Id).ToString()" value="@Model.Id">ثبت</button>
+                        <button type="submit" class="btn btn-danger" onclick="return goBack();"> بازگشت </button>
+                        <p class="help-block">@( Model._Result != null ? Model._Result : "")</p>
+
+
+                    </div>
+                </section>
+            </div>
+
+
+            <div class="col-lg-8">
+                <section class="panel">
+                    <header class="panel-heading">
+                        افراد داخل سازمان
+                    </header>
+
+                    <div class="panel-body table-responsive">
+
+                        <table id="contactDT" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th style="display:none;"></th>
+                                    <th>نام</th>
+                                    <th>نام خانوادگی</th>
+                                    <th>ایمیل</th>
+                                    <th>شماره تماس ها</th>
+                                    <th>حذف</th>
+                                </tr>
+                            </thead>
+                            <tbody id="contactBody">
+                                @{
+                                    if (Model.selectedContacts != null && Model.selectedContacts.Count > 0)
+                                    {
+                                        foreach (ContactViewModel item in Model.selectedContacts)
+                                        {
+                                            <tr>
+                                                <td style="display:none"><input type="hidden" value="@item.Id" name="newContactId" /></td>
+                                                <td>@item.Name</td>
+                                                <td>@item.Family</td>
+                                                <td>@item.Email</td>
+                                                <td>
+                                                    <ul>
+                                                        @foreach (string number in item.Numbers)
+                                                        {
+                                                            <li>@number</li>
+                                                        }
+                                                    </ul>
+                                                </td>
+                                                <td><button type="button" class="btn btn-default btn-xs" onclick="removeContact(this,'@item.Id')"><i class="fa fa-times"></i></button></td>
+                                            </tr>
+
+                                        }
+                                    }
+                                }
+                            </tbody>
+                        </table>
+
+                        <a href="#myModal" data-toggle="modal" class="btn btn-xs btn-success" onclick="getContactsDataFromDB('@Model.Id');">
+                            انتخاب افراد جدید
+                        </a>
+
+
+
+
+                    </div>
+
+                </section>
+            </div>
+        </form>
+
+    </div>
+
+
+    <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                    <h4 class="modal-title">افراد خارج از سازمان</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="panel-body table-responsive">
+
+                        <table id="allContactDT" class="table table-hover" style="width:100%!important">
+                            <thead>
+                                <tr>
+                                    <th style="display:none;"></th>
+                                    <th>نام</th>
+                                    <th>نام خانوادگی</th>
+                                    <th>ایمیل</th>
+                                    <th>تلفن</th>
+                                    <th>انتخاب</th>
+                                </tr>
+                            </thead>
+                            <tbody id="allContactsBody"></tbody>
+                        </table>
+
+                        <button type="button" class="btn btn-primary btn-addon btn-sm" onclick="addSelectedContact();"><i class="fa fa-plus"></i>اضافه کردن موارد انتخاب شده</button>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,29 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using System.Web.Routing;
+
+namespace SMSPortalWebPanel
+{
+    public class RouteConfig
+    {
+        public static void RegisterRoutes(RouteCollection routes)
+        {
+            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+
+            routes.MapMvcAttributeRoutes();
+            
+            routes.MapRoute(
+                name: "Default",
+                url: "{controller}/{action}/{id}",
+<<<<<<< HEAD
+                defaults: new { controller = "Contact", action = "AddUpdateContact", id = UrlParameter.Optional }
+=======
+                defaults: new { controller = "NewMessage", action = "Index", id = UrlParameter.Optional }
+>>>>>>> c512f9477fc46f8d77f350d9e1405d63131b9f74
+            );
+        }
+    }
+}

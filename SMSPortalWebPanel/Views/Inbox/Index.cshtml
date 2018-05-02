@@ -1,0 +1,67 @@
+﻿
+@using SMSPortalWebPanel.ViewModels
+@model InboxListViewModel
+    @section TitleSection{
+        صندوق دریافت
+    }
+    @section ActiveInBox{active}
+    @section HeaderSection{
+        <link href="~/Content/datatables/dataTables.bootstrap.css" rel="stylesheet" />
+        <script src="~/Scripts/plugins/datatables/jquery.dataTables.js"></script>
+        <script src="~/Scripts/plugins/datatables/dataTables.bootstrap.js"></script>
+        <script src="~/Scripts/jquery.validate.js"></script>
+        <script language="javascript" type="text/javascript">
+
+            $(document).ready(function () {
+                myDataTable('#myDataTable');
+            });
+
+        </script>
+    }
+    @section ContentBody{
+        <div class="row">
+            <div class="col-md-8 col-centered">
+                <section class="panel">
+                    <header class="panel-heading">
+                        پیام های دریافتی
+                    </header>
+                    <div class="panel-body table-responsive">
+                        <table id="myDataTable" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>پیام</th>
+                                    <th>شماره فرستنده</th>
+                                    <th>سیم کارت دریافت کننده</th>
+                                    <th>زمان دریافت</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                        
+                                
+
+
+                                @foreach (InboxViewModel item in Model.InboxVMs)
+                                {
+                                    string shote_message = item.Message.Length > 20 ? item.Message.Substring(0, 20) + "..." : item.Message;
+                                    <tr>
+                                        <td></td>
+                                        <td><span style="cursor:pointer;" onclick="showGeneralInfoModal('@item.Message.Replace("\n", "")');">@shote_message</span></td>
+                                        <td>@item.SenderNumber</td>
+                                        <td>@item.SimNumber</td>
+                                        <td>@item.DTRecieved</td>
+                                       </tr>
+
+                                }
+                            </tbody>
+                        </table>
+                      
+                    </div>
+                </section>
+
+            </div>
+        </div>
+
+    }
+

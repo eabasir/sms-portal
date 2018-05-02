@@ -1,0 +1,125 @@
+﻿
+@using SMSPortalWebPanel.ViewModels
+@model ContactListViewModel
+@section TitleSection{
+    مدیریت مخاطب ها
+}
+@section ActiveContact{active}
+@section HeaderSection{
+
+    <link href="~/Content/datatables/dataTables.bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/plugins/datatables/jquery.dataTables.js"></script>
+    <script src="~/Scripts/plugins/datatables/dataTables.bootstrap.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+
+    <script language="javascript" type="text/javascript">
+
+        $(document).ready(function () {
+            myDataTable('#myDataTable')
+        });
+
+        $(document).on('confirmation', '.remodal', function () {
+            var url = '@Url.Action("Delete", "Contact" )';
+            window.location.href = url + "/" + IdToDelete;
+
+        });
+
+        var IdToDelete;
+
+        function setIdToDelete(id) {
+            IdToDelete = id;
+
+        }
+
+    </script>
+
+}
+@section ContentBody{
+    <div class="row">
+
+        <div class="col-md-12">
+            <section class="panel">
+                <header class="panel-heading">
+                    مخاطب ها
+                </header>
+
+
+                <div class="panel-body table-responsive">
+
+                    <table id="myDataTable" class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>نام</th>
+                                <th>نام خانوادگی</th>
+                                <th>ایمیل</th>
+                                <th>آدرس</th>
+                                <th>سازمان</th>
+                                <th>شماره تماس ها</th>
+                                <th>ویرایش</th>
+                                <th>حذف</th>
+                                <th>ارسال پیام</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (ContactViewModel item in Model.ContactVMs)
+                            {
+                                <tr>
+                                    <td></td>
+                                    <td>@item.Name</td>
+                                    <td>@item.Family</td>
+                                    <td>@item.Email</td>
+                                    <td>@item.Address</td>
+                                    <td>
+                                        <ul>
+                                            @foreach (string company in item.Companies)
+                                            {
+                                                <li>@company</li>
+                                            }
+                                        </ul>
+                                    </td>
+                                    <td>
+                                        <ul>
+                                            @foreach (string number in item.Numbers)
+                                            {
+                                                <li>@number</li>
+                                            }
+                                        </ul>
+                                    </td>
+                                    <td><a href="~/Contact/AddUpdate/@item.Id"><button class="btn btn-default btn-xs"><i class="fa fa-pencil"></i></button></a></td>
+                                    <td><a data-remodal-target="defultYesNoModal" href="#"><button class="btn btn-default btn-xs" onclick="setIdToDelete('@item.Id');"><i class="fa fa-times"></i></button></a></td>
+                                    <td><a class="btn btn-success btn-sm" style="font-size:10px;" href="/NewMessage/SendMessageToContact/@item.Id">ارسال پیام</a></td>
+                                </tr>
+
+                            }
+                        </tbody>
+                    </table>
+                    <a href="~/Contact/AddUpdate">
+                        <button class="btn btn-primary btn-addon btn-sm" type="submit">
+                            <i class="fa fa-plus"></i>
+                            مخاطب جدید
+                        </button>
+                    </a>
+
+                    <a href="~/Contact/GroupAdd">
+                        <button class="btn btn-primary btn-addon btn-sm" type="submit">
+                            <i class="fa fa-plus"></i>
+                            اضافه کردن گروهی
+                        </button>
+                    </a>
+
+                </div>
+            </section>
+
+
+
+        </div>
+
+    </div>
+
+
+
+}
+
+
+

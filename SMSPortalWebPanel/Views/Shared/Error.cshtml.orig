@@ -1,0 +1,25 @@
+﻿@model HandleErrorInfo
+<<<<<<< HEAD
+@{
+    Layout = "~/Views/Shared/ErrorLayout.cshtml";
+}
+=======
+>>>>>>> c512f9477fc46f8d77f350d9e1405d63131b9f74
+
+@section TitleSection{
+    خطا
+}
+
+@section HeaderSection{
+
+}
+@section ContentBody{
+    <div class="row">
+        <div class="col-md-8">
+            <hgroup>
+                <h2>خطا</h2>
+                <h3>خطایی به هنگام درخواست شما رخ داده است</h3>
+            </hgroup>
+        </div>
+    </div>
+}

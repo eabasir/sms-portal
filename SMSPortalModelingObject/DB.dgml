@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DirectedGraph xmlns="http://schemas.microsoft.com/vs/2009/dgml">
+  <Nodes>
+    <Node Id="(@1)" Category="CodeSchema_Solution" Bounds="321.016196874254,2.8421709430404E-14,74.5266666666667,25.96" Label="SMSPortal" />
+    <Node Id="(@4 @2 Type=Company)" Category="CodeSchema_Class" Bounds="117.6901,179.188734029847,91.5533333333333,26" CodeSchemaProperty_IsPublic="True" CommonLabel="Company" Icon="Microsoft.VisualStudio.Class.Public" Label="Company" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///C:/Users/Ehsan/Desktop/SMS Portal/Project/SMSPortal/SMSPortalDBDataLibrary/Company.cs&quot; StartLineNumber=14 StartCharacterOffset=4 EndLineNumber=14 EndCharacterOffset=4)" />
+    <Node Id="(@4 @2 Type=Contact)" Category="CodeSchema_Class" Bounds="239.243533333333,179.188734029847,82.0333333333333,26" CodeSchemaProperty_IsPublic="True" CommonLabel="Contact" Icon="Microsoft.VisualStudio.Class.Public" Label="Contact" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///C:/Users/Ehsan/Desktop/SMS Portal/Project/SMSPortal/SMSPortalDBDataLibrary/Contact.cs&quot; StartLineNumber=14 StartCharacterOffset=4 EndLineNumber=14 EndCharacterOffset=4)" />
+    <Node Id="(@4 @2 Type=Inbox)" Category="CodeSchema_Class" Bounds="522.347916240386,235.188734029847,70.5733333333334,26" CodeSchemaProperty_IsPublic="True" CommonLabel="Inbox" Icon="Microsoft.VisualStudio.Class.Public" Label="Inbox" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///C:/Users/Ehsan/Desktop/SMS Portal/Project/SMSPortal/SMSPortalDBDataLibrary/Inbox.cs&quot; StartLineNumber=14 StartCharacterOffset=4 EndLineNumber=14 EndCharacterOffset=4)" />
+    <Node Id="(@4 @2 Type=Message)" Category="CodeSchema_Class" Bounds="5.6843418860808E-14,179.188734029847,87.69,26" CodeSchemaProperty_IsPublic="True" CommonLabel="Message" Icon="Microsoft.VisualStudio.Class.Public" Label="Message" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///C:/Users/Ehsan/Desktop/SMS Portal/Project/SMSPortal/SMSPortalDBDataLibrary/Message.cs&quot; StartLineNumber=14 StartCharacterOffset=4 EndLineNumber=14 EndCharacterOffset=4)" />
+    <Node Id="(@4 @2 Type=Phone)" Category="CodeSchema_Class" Bounds="417.741149573719,242.583614822003,74.6066666666667,26" CodeSchemaProperty_IsPublic="True" CommonLabel="Phone" Icon="Microsoft.VisualStudio.Class.Public" Label="Phone" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///C:/Users/Ehsan/Desktop/SMS Portal/Project/SMSPortal/SMSPortalDBDataLibrary/Phone.cs&quot; StartLineNumber=14 StartCharacterOffset=4 EndLineNumber=14 EndCharacterOffset=4)" />
+    <Node Id="(@4 @2 Type=Queue)" Category="CodeSchema_Class" Bounds="311.56104957372,243.920944283898,76.18,26" CodeSchemaProperty_IsPublic="True" CommonLabel="Queue" Icon="Microsoft.VisualStudio.Class.Public" Label="Queue" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///C:/Users/Ehsan/Desktop/SMS Portal/Project/SMSPortal/SMSPortalDBDataLibrary/Queue.cs&quot; StartLineNumber=14 StartCharacterOffset=4 EndLineNumber=14 EndCharacterOffset=4)" />
+    <Node Id="(@4 @2 Type=Queue_Phone)" Category="CodeSchema_Class" Bounds="49.8708495737193,235.188734029847,114.766666666667,26" CodeSchemaProperty_IsPublic="True" CommonLabel="Queue_Phone" Icon="Microsoft.VisualStudio.Class.Public" Label="Queue_Phone" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///C:/Users/Ehsan/Desktop/SMS Portal/Project/SMSPortal/SMSPortalDBDataLibrary/Queue_Phone.cs&quot; StartLineNumber=14 StartCharacterOffset=4 EndLineNumber=14 EndCharacterOffset=4)" />
+    <Node Id="(@4 @2 Type=SIM)" Category="CodeSchema_Class" Bounds="351.276966666667,186.583614822003,61.3433333333333,26" CodeSchemaProperty_IsPublic="True" CommonLabel="SIM" Icon="Microsoft.VisualStudio.Class.Public" Label="SIM" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///C:/Users/Ehsan/Desktop/SMS Portal/Project/SMSPortal/SMSPortalDBDataLibrary/SIM.cs&quot; StartLineNumber=14 StartCharacterOffset=4 EndLineNumber=14 EndCharacterOffset=4)" />
+    <Node Id="(@4 @2 Type=SIM_User)" Category="CodeSchema_Class" Bounds="537.407166666667,179.188734029847,90.11,26" CodeSchemaProperty_IsPublic="True" CommonLabel="SIM_User" Icon="Microsoft.VisualStudio.Class.Public" Label="SIM_User" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///C:/Users/Ehsan/Desktop/SMS Portal/Project/SMSPortal/SMSPortalDBDataLibrary/SIM_User.cs&quot; StartLineNumber=14 StartCharacterOffset=4 EndLineNumber=14 EndCharacterOffset=4)" />
+    <Node Id="(@4 @2 Type=SMSPortalDBEntities)" Category="CodeSchema_Class" Bounds="247.64745371141,299.920944283898,148.996666666667,26" CodeSchemaProperty_IsPublic="True" CommonLabel="SMSPortalDBEntities" Icon="Microsoft.VisualStudio.Class.Public" Label="SMSPortalDBEntities" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///C:/Users/Ehsan/Desktop/SMS Portal/Project/SMSPortal/SMSPortalDBDataLibrary/SMSPortalDataModel.Context.cs&quot; StartLineNumber=15 StartCharacterOffset=4 EndLineNumber=15 EndCharacterOffset=4)" />
+    <Node Id="(@4 @2 Type=SendBox)" Category="CodeSchema_Class" Bounds="194.637616240386,235.188734029847,86.9233333333333,26" CodeSchemaProperty_IsPublic="True" CommonLabel="SendBox" Icon="Microsoft.VisualStudio.Class.Public" Label="SendBox" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///C:/Users/Ehsan/Desktop/SMS Portal/Project/SMSPortal/SMSPortalDBDataLibrary/SendBox.cs&quot; StartLineNumber=14 StartCharacterOffset=4 EndLineNumber=14 EndCharacterOffset=4)" />
+    <Node Id="(@4 @2 Type=SendBox_Phone)" Category="CodeSchema_Class" Bounds="657.517266666667,179.188734029847,125.51,26" CodeSchemaProperty_IsPublic="True" CommonLabel="SendBox_Phone" Icon="Microsoft.VisualStudio.Class.Public" Label="SendBox_Phone" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///C:/Users/Ehsan/Desktop/SMS Portal/Project/SMSPortal/SMSPortalDBDataLibrary/SendBox_Phone.cs&quot; StartLineNumber=14 StartCharacterOffset=4 EndLineNumber=14 EndCharacterOffset=4)" />
+    <Node Id="(@4 @2 Type=User)" Category="CodeSchema_Class" Bounds="442.6204,179.188734029847,64.7866666666666,26" CodeSchemaProperty_IsPublic="True" CommonLabel="User" Icon="Microsoft.VisualStudio.Class.Public" Label="User" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///C:/Users/Ehsan/Desktop/SMS Portal/Project/SMSPortal/SMSPortalDBDataLibrary/User.cs&quot; StartLineNumber=14 StartCharacterOffset=4 EndLineNumber=14 EndCharacterOffset=4)" />
+    <Node Id="@3" Category="CodeSchema_Namespace" Bounds="276.303487709536,123.188734029847,171.383333333333,26" Icon="Microsoft.VisualStudio.Namespace.Public" Label="SMSPortalDBDataLibrary" />
+  </Nodes>
+  <Links>
+    <Link Source="(@1)" Target="@3" Category="Contains" Bounds="358.670970003543,25.96,2.66085042664025,88.2328237818798" />
+    <Link Source="@3" Target="(@4 @2 Type=Company)" Category="Contains" Bounds="216.52735349029,149.188734029847,99.3808537390559,28.0329068985826" />
+    <Link Source="@3" Target="(@4 @2 Type=Contact)" Category="Contains" Bounds="306.65892881014,149.188734029847,36.3620397287302,24.9131383304688" />
+    <Link Source="@3" Target="(@4 @2 Type=Inbox)" Category="Contains" Bounds="376.286010742188,149.188735961914,137.999633789063,84.5308837890625" />
+    <Link Source="@3" Target="(@4 @2 Type=Message)" Category="Contains" Bounds="96.5223388671875,148.976959228516,181.673980712891,32.8992767333984" />
+    <Link Source="@3" Target="(@4 @2 Type=Phone)" Category="Contains" Bounds="381.614105224609,149.188735961914,64.7256469726563,85.0618896484375" />
+    <Link Source="@3" Target="(@4 @2 Type=Queue)" Category="Contains" Bounds="349.695098876953,149.188735961914,9.04995727539063,85.7322235107422" />
+    <Link Source="@3" Target="(@4 @2 Type=Queue_Phone)" Category="Contains" Bounds="160.238830566406,149.188735961914,149.193634033203,83.4611358642578" />
+    <Link Source="@3" Target="(@4 @2 Type=SIM)" Category="Contains" Bounds="366.086892119084,149.188734029847,9.06794421249833,28.8100758577652" />
+    <Link Source="@3" Target="(@4 @2 Type=SIM_User)" Category="Contains" Bounds="413.174996515061,149.188734029847,115.835803309451,29.4230185184481" />
+    <Link Source="@3" Target="(@4 @2 Type=SMSPortalDBEntities)" Category="Contains" Bounds="306.013977050781,149.188735961914,49.2762145996094,142.017807006836" />
+    <Link Source="@3" Target="(@4 @2 Type=SendBox)" Category="Contains" Bounds="283.497375488281,149.188735961914,73.4734802246094,83.0101013183594" />
+    <Link Source="@3" Target="(@4 @2 Type=SendBox_Phone)" Category="Contains" Bounds="445.036099319425,149.168332104341,203.589131742375,31.8217128208009" />
+    <Link Source="@3" Target="(@4 @2 Type=User)" Category="Contains" Bounds="388.231610205537,149.188734029847,52.4813391384799,26.0041757636119" />
+  </Links>
+  <Categories>
+    <Category Id="CodeSchema_Class" Label="Class" BasedOn="CodeSchema_Type" CanBeDataDriven="True" DefaultAction="Node:Both:CodeSchema_Member" Icon="CodeSchema_Class" NavigationActionLabel="Classes" />
+    <Category Id="CodeSchema_Namespace" Label="Namespace" CanBeDataDriven="True" DefaultAction="Node:Both:CodeSchema_Type" Icon="CodeSchema_Namespace" NavigationActionLabel="Namespaces" />
+    <Category Id="CodeSchema_Solution" Label="Solution" CanBeDataDriven="True" DefaultAction="Microsoft.Contains" NavigationActionLabel="Solutions" />
+    <Category Id="CodeSchema_Type" Label="Type" CanBeDataDriven="True" DefaultAction="Node:Both:CodeSchema_Member" Icon="CodeSchema_Class" NavigationActionLabel="Types" />
+    <Category Id="Contains" Label="Contains" Description="Whether the source of the link contains the target object" CanBeDataDriven="False" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Contained By" IsContainment="True" OutgoingActionLabel="Contains" />
+  </Categories>
+  <Properties>
+    <Property Id="Bounds" DataType="System.Windows.Rect" />
+    <Property Id="CanBeDataDriven" Label="CanBeDataDriven" Description="CanBeDataDriven" DataType="System.Boolean" />
+    <Property Id="CanLinkedNodesBeDataDriven" Label="CanLinkedNodesBeDataDriven" Description="CanLinkedNodesBeDataDriven" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsPublic" Label="Is Public" Description="Flag to indicate the scope is Public" DataType="System.Boolean" />
+    <Property Id="CommonLabel" DataType="System.String" />
+    <Property Id="DefaultAction" Label="DefaultAction" Description="DefaultAction" DataType="System.String" />
+    <Property Id="Icon" Label="Icon" Description="Icon" DataType="System.String" />
+    <Property Id="IncomingActionLabel" Label="IncomingActionLabel" Description="IncomingActionLabel" DataType="System.String" />
+    <Property Id="IsContainment" DataType="System.Boolean" />
+    <Property Id="Label" Label="Label" Description="Displayable label of an Annotatable object" DataType="System.String" />
+    <Property Id="Language" Label="Language" Description="Language" DataType="System.String" />
+    <Property Id="NavigationActionLabel" Label="NavigationActionLabel" Description="NavigationActionLabel" DataType="System.String" />
+    <Property Id="OutgoingActionLabel" Label="OutgoingActionLabel" Description="OutgoingActionLabel" DataType="System.String" />
+    <Property Id="SourceLocation" Label="Start Line Number" DataType="Microsoft.VisualStudio.GraphModel.CodeSchema.SourceLocation" />
+  </Properties>
+  <QualifiedNames>
+    <Name Id="Assembly" Label="Assembly" ValueType="Uri" />
+    <Name Id="Namespace" Label="Namespace" ValueType="System.String" />
+    <Name Id="Type" Label="Type" ValueType="System.Object" />
+  </QualifiedNames>
+  <IdentifierAliases>
+    <Alias n="1" Uri="Assembly=$(VsSolutionUri)/SMSPortal.sln" />
+    <Alias n="2" Id="Namespace=SMSPortalDBDataLibrary" />
+    <Alias n="3" Id="(@2)" />
+    <Alias n="4" Uri="Assembly=$(63987b2d-36b3-4a68-9952-5781fb22d85c.OutputPathUri)" />
+  </IdentifierAliases>
+  <Paths>
+    <Path Id="63987b2d-36b3-4a68-9952-5781fb22d85c.OutputPathUri" Value="file:///C:/Users/Ehsan/Desktop/SMS Portal/Project/SMSPortal/SMSPortalDBDataLibrary/bin/Debug/SMSPortalDBDataLibrary.dll" />
+    <Path Id="VsSolutionUri" Value="file:///C:/Users/Ehsan/Desktop/SMS Portal/Project/SMSPortal" />
+  </Paths>
+</DirectedGraph>

@@ -1,0 +1,97 @@
+﻿
+@using SMSPortalWebPanel.ViewModels
+@model CompanyListViewModel
+@section TitleSection{
+    مدیریت سازمان ها
+}
+@section ActiveCompany{active}
+
+@section HeaderSection{
+
+    <link href="~/Content/datatables/dataTables.bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/plugins/datatables/jquery.dataTables.js"></script>
+    <script src="~/Scripts/plugins/datatables/dataTables.bootstrap.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+
+    <script language="javascript" type="text/javascript">
+
+        $(document).ready(function () {
+            myDataTable('#myDataTable');
+        });
+
+        $(document).on('confirmation', '.remodal', function () {
+            var url = '@Url.Action("Delete", "Company" )';
+            window.location.href = url + "/" + IdToDelete;
+
+        });
+
+        var IdToDelete;
+
+        function setIdToDelete(id) {
+            IdToDelete = id;
+
+        }
+
+    </script>
+
+}
+@section ContentBody{
+    <div class="row">
+
+        <div class="col-md-10 col-centered">
+            <section class="panel">
+                <header class="panel-heading">
+                    سازمان ها
+                </header>
+                <div class="panel-body table-responsive">
+
+                    <table id="myDataTable" class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>نام</th>
+                                <th>تلفن</th>
+                                <th>آدرس</th>
+                                <th>ویرایش</th>
+                                <th>حذف</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (CompanyViewModel item in Model.CompanyVMs)
+                            {
+                                <tr>
+                                    <td></td>
+                                    <td>@item.Name</td>
+                                    <td>@item.Number</td>
+                                    <td>@item.Address</td>
+                                    <td><a href="~/Company/AddUpdate/@item.Id"><button class="btn btn-default btn-xs"><i class="fa fa-pencil"></i></button></a></td>
+                                    <td><a data-remodal-target="defultYesNoModal" href="#"><button class="btn btn-default btn-xs" onclick="setIdToDelete('@item.Id');"><i class="fa fa-times"></i></button></a></td>
+                                </tr>
+
+                            }
+                        </tbody>
+                    </table>
+                    <form action="/Company/AddUpdate" method="get">
+                        <button class="btn btn-primary btn-addon btn-sm" type="submit">
+                            <i class="fa fa-plus"></i>
+                            سازمان جدید
+                        </button>
+
+
+
+                    </form>
+                </div>
+            </section>
+
+
+
+        </div>
+
+    </div>
+
+
+
+}
+
+
+

@@ -1,0 +1,197 @@
+﻿
+using SMSPortalCross;
+using SMSPortalDBDataLibrary;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+<<<<<<< HEAD
+using System.Threading;
+using System.Threading.Tasks;
+using System.Web;
+=======
+using System.Threading.Tasks;
+>>>>>>> c512f9477fc46f8d77f350d9e1405d63131b9f74
+using System.Web.Services;
+
+namespace SMSPortalService
+{
+    [WebService(Namespace = "http://tempuri.org/")]
+    [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
+    [System.ComponentModel.ToolboxItem(false)]
+    public class WebService : System.Web.Services.WebService
+    {
+
+
+        [WebMethod]
+<<<<<<< HEAD
+        public void AddToQueue(string userName, string password, string content, List<string> numbers, SMSPortalCross.Enums.Schedule ScheduleType, DateTime dtSend)
+=======
+        public void AddToQueue(string userName, string password, string content, List<string> numbers, Enums.Schedule ScheduleType, DateTime dtSend)
+>>>>>>> c512f9477fc46f8d77f350d9e1405d63131b9f74
+        {
+            try
+            {
+                User user = null;
+                using (SMSPortalDBEntities db = new SMSPortalDBEntities())
+                {
+
+                    user = (from x in db.Users where x.TFUserName == userName && x.TFPassword == password select x).FirstOrDefault();
+
+                }
+                if (user != null)
+                {
+                    Task.Run(() =>
+                    {
+                       
+
+                        numbers = numbers.Distinct().ToList();
+                        if (numbers != null)
+                        {
+                            List<Phone> lstPhone = NumberHandler(numbers);
+                            Message message = MessageHandler(content, ScheduleType, dtSend);
+
+                            GSMHandler handler = new GSMHandler();
+
+                            handler.QueueMaker(user, message, lstPhone, ScheduleType, dtSend);
+
+                        }
+                    });
+
+                }
+                else
+                {
+
+                }
+
+            }
+            catch (Exception e)
+            {
+                Logger.Log(Messages.WEBSERVICE_ADD_TO_QUEUE, e);
+            }
+
+
+
+
+
+        }
+
+
+        [WebMethod]
+        public void ProccessScheduleQueue(Guid userId, Guid sendBoxId)
+        {
+
+            try
+            {
+                User user = null;
+                using (SMSPortalDBEntities db = new SMSPortalDBEntities())
+                {
+                    user = (from x in db.Users where x.TFId == userId select x).FirstOrDefault();
+                }
+                if (user != null)
+                {
+                    Task.Run(() =>
+                    {
+                        GSMHandler handler = new GSMHandler();
+                        handler.PushBySchedule(user, sendBoxId);
+                    });
+                }
+                else
+                {
+                }
+
+            }
+            catch (Exception e)
+            {
+                Logger.Log(Messages.WEBSERVICE_ADD_TO_QUEUE, e);
+            }
+        }
+
+
+      
+         
+
+<<<<<<< HEAD
+        Message MessageHandler(string content, SMSPortalCross.Enums.Schedule ScheduleType, DateTime dtSend)
+=======
+        Message MessageHandler(string content, Enums.Schedule ScheduleType, DateTime dtSend)
+>>>>>>> c512f9477fc46f8d77f350d9e1405d63131b9f74
+        {
+            using (SMSPortalDBEntities db = new SMSPortalDBEntities())
+            {
+                Message message = null;
+                if (ScheduleType == SMSPortalCross.Enums.Schedule.None)
+                {
+                    message = (from x in db.Messages
+                               where x.TFContent == content
+                               select x).FirstOrDefault();
+                }
+                else
+                {
+                    message = (from x in db.Messages
+                               where x.TFContent == content
+                               && x.TFDateTimeCreate == dtSend
+                               select x).FirstOrDefault();
+                }
+
+                if (message != null)
+                    return message;
+                else
+                {
+                    message = new Message()
+                    {
+                        TFId = Guid.NewGuid(),
+                        TFContent = content,
+                        TFDateTimeCreate = DateTime.Now
+                    };
+                    db.Messages.Add(message);
+                    db.SaveChanges();
+                    return message;
+                }
+
+
+            }
+
+
+
+
+
+        }
+
+        List<Phone> NumberHandler(List<string> numbers)
+        {
+            List<Phone> lstPhone = null;
+
+            using (SMSPortalDBEntities db = new SMSPortalDBEntities())
+            {
+
+                List<string> newNumbers = numbers.Where(x => !db.Phones
+                                                .Select(y => y.TFNumber)
+                                                .Contains(x)
+                                                ).ToList();
+
+                if (newNumbers != null && newNumbers.Count > 0)
+                {
+                    foreach (string number in newNumbers)
+                    {
+                        db.Phones.Add(new Phone()
+                            {
+                                TFId = Guid.NewGuid(),
+                                TFNumber = number
+                            });
+                    }
+                    db.SaveChanges();
+                }
+                lstPhone = (from x in db.Phones select x).Where(x => numbers.Contains(x.TFNumber)).ToList();
+
+
+            }
+            return lstPhone;
+        }
+
+
+
+
+
+
+    }
+}

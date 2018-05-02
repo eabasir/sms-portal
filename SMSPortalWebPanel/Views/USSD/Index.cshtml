@@ -1,0 +1,155 @@
+﻿@using SMSPortalWebPanel.ViewModels
+@model USSDListViewModel
+
+@section TitleSection{
+    ارسال USSD
+}
+@section ActiveCompany{active}
+
+@section HeaderSection{
+
+    <link href="~/Content/datatables/dataTables.bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/plugins/datatables/jquery.dataTables.js"></script>
+    <script src="~/Scripts/plugins/datatables/dataTables.bootstrap.js"></script>
+    <script src="~/Scripts/plugins/datatables/fnReloadAjax.js"></script>
+
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/USSD.js"></script>
+    <script type="text/javascript">
+
+
+        getUSSDListURL = "@Url.Action("getUSSDList", "USSD")";
+        sendNewQueryURL = "@Url.Action("sendNewUSSD", "USSD")";
+
+
+        function goBack() {
+            var url = '@Url.Action("Index", "SIM")';
+            window.location.href = url;
+            return false;
+        }
+
+        $(document).ready(function () {
+
+            $('#chkPrefered').change(function () {
+                if ($(this).is(':checked')) {
+
+                    $('#divPreferedTitle').show();
+                }
+                else {
+                    $('#divPreferedTitle').hide();
+                }
+            });
+
+            getList();
+             setInterval(getList, 20000);
+
+        });
+
+
+
+    </script>
+}
+@section ContentBody{
+    <div class="row">
+        <form role="form" action="/Company/Save" method="post">
+
+            <div class="col-lg-4">
+                <section class="panel">
+                    <header class="panel-heading">
+                        اطلاعات ارسال
+                    </header>
+                    <div class="panel-body">
+
+
+                        <div class="sm-st-info">
+                            <label>شماره:</label>
+
+                            <span id="spanNumber">@Model.SIM_Number</span>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label>متن ارسالی:</label>
+                            <input type="text" class="form-control" id="txtSendMessage" placeholder="دستور ارسالی" style="direction:ltr;">
+                        </div>
+
+                        <div class="form-group">
+                            <label>انتخاب به عنوان مورد علاقه</label>
+                            <input id="chkPrefered" type="checkbox" />
+                        </div>
+
+                        <div class="form-group" id="divPreferedTitle" hidden>
+                            <label>عنوان:</label>
+                            <input type="text" class="form-control" id="txtPreferedTitle" placeholder="عنوان دستور ارسالی">
+                        </div>
+
+                        <button type="button" class="btn btn-info" onclick="makeNewQuery();">ثبت</button>
+                        <button type="submit" class="btn btn-danger" onclick="return goBack();"> بازگشت </button>
+                        <p class="help-block">@( Model._Result != null ? Model._Result : "")</p>
+
+
+                    </div>
+                </section>
+            </div>
+
+
+            <div class="col-lg-8">
+                <section class="panel">
+                    <header class="panel-heading">
+                        موارد مورد علاقه
+                    </header>
+
+                    <div class="panel-body table-responsive">
+                        <table id="preferedTable" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>عنوان</th>
+                                    <th>دستور ارسالی</th>
+                                    <th>ارسال مجدد</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+
+                    </div>
+                </section>
+            </div>
+        </form>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-lg-12">
+            <section class="panel">
+                <header class="panel-heading">
+                    نتایج
+                </header>
+
+                <div class="panel-body table-responsive">
+                    <table id="recentTable" class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>دستور ارسال شده</th>
+                                <th>پاسخ دریافت شده</th>
+                                <th>تاریخ ارسال</th>
+                                <th>وضعیت ارسال</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+
+                </div>
+            </section>
+        </div>
+    </div>
+    <style>
+        #recentTable tbody tr td:nth-child(2) {
+            direction: ltr;
+            text-align: right;
+        }
+    </style>
+
+}

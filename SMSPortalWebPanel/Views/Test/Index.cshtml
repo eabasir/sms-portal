@@ -1,0 +1,75 @@
+﻿
+@using SMSPortalWebPanel.ViewModels
+
+@section TitleSection{
+    مدیریت سیم کارت
+}
+@section ActiveGSM{active}
+
+@section HeaderSection{
+
+    <link href="~/Content/datatables/dataTables.bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/plugins/datatables/jquery.dataTables.js"></script>
+    <script src="~/Scripts/plugins/datatables/dataTables.bootstrap.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+
+    <script language="javascript" type="text/javascript">
+
+        var car = { Make: 'Audi', Model: 'A4 Avant', Colour: 'Black', Registered: 2013 };
+        $(document).ready(function () {
+            try {
+                $.ajax({
+                    type: "POST",
+                    url: "@Url.Action("getData")",
+                    data: JSON.stringify(car),
+                    contentType: "application/json",
+                    datatype: "json",
+                    success: function (data) {
+                        $('#result').html(data);
+                    }
+                });
+            }
+            catch (Err)
+            {
+                console.log(Err);
+            }
+        });
+
+    </script>
+
+}
+@section ContentBody{
+    <div class="row">
+
+        <div class="col-md-8">
+            <section class="panel">
+                <header class="panel-heading">
+                    سیم کارت ها
+                </header>
+             
+                <div id="result">
+                    @{
+                        string json;
+                        using (var reader = new StreamReader(Request.InputStream))
+                        {
+                            json = reader.ReadToEnd();
+                        }
+                        var car = Json.Decode(json);
+                    }
+                </div>
+
+
+            </section>
+
+
+
+        </div>
+
+    </div>
+
+
+
+}
+
+
+

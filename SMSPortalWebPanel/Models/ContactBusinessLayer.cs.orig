@@ -1,0 +1,244 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using SMSPortalDBDataLibrary;
+using SMSPortalWebPanel.ViewModels;
+using System.Data.Entity;
+using System.Web.Mvc;
+
+namespace SMSPortalWebPanel.Models
+{
+    public class ContactBusinessLayer
+    {
+        public List<ContactViewModel> GetContactVMs()
+        {
+            try
+            {
+                List<ContactViewModel> lstContactVM = new List<ContactViewModel>();
+                using (SMSPortalDBEntities db = new SMSPortalDBEntities())
+                {
+                    var q = (from x in db.Contacts select x).ToList();
+
+                    foreach (Contact contact in q)
+                    {
+                        ContactViewModel contactVM = new ContactViewModel()
+                        {
+                            Id = contact.TFId,
+                            Name = contact.TFName,
+                            Family = contact.TFFamily,
+                            Email = contact.TFEmail != null ? contact.TFEmail : "-",
+                            Address = contact.TFAddress != null ? contact.TFAddress : "-",
+                            Company = (from x in db.Companies where x.TFId == contact.TFCompany_Id select x.TFName).FirstOrDefault(),
+                            Numbers = (from x in db.Phones where x.TFContact_Id == contact.TFId select x.TFNumber).ToList()
+
+                        };
+                        lstContactVM.Add(contactVM);
+
+                    }
+
+                    return lstContactVM;
+
+                }
+            }
+            catch (Exception e)
+            {
+            }
+            return null;
+        }
+
+
+        public bool addNewContact(ContactAddUpdateViewModel contactAddUpdateVM)
+        {
+            using (SMSPortalDBEntities db = new SMSPortalDBEntities())
+                try
+                {
+                    Contact contact = new Contact()
+                    {
+                        TFId = Guid.NewGuid(),
+                        TFName = contactAddUpdateVM.Name,
+                        TFFamily = contactAddUpdateVM.Family,
+                        TFAddress = contactAddUpdateVM.Address,
+                        TFEmail = contactAddUpdateVM.Email,
+
+                    };
+
+                    if (contactAddUpdateVM.SelectedCompanyId != null)
+                        contact.TFCompany_Id = db.Companies.FirstOrDefault(x => x.TFId == contactAddUpdateVM.SelectedCompanyId).TFId;
+
+                    db.Contacts.Add(contact);
+                  
+                    foreach (string number in contactAddUpdateVM.Numbers)
+                    {
+                        Phone prePhone = db.Phones.FirstOrDefault(x => x.TFNumber == number);
+
+                        if (prePhone == null)
+                        {
+                            db.Phones.Add(new Phone()
+                            {
+                                TFId = Guid.NewGuid(),
+                                TFNumber = number,
+                                TFContact_Id = contact.TFId
+                            });
+                        }
+                        else
+                        {
+                            prePhone.TFContact_Id = contactAddUpdateVM.Id;
+                            db.Entry(prePhone).State = EntityState.Modified;
+                        }
+
+                    }
+
+                    db.SaveChanges();
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    return false;
+
+                }
+
+        }
+
+        public bool updateContact(ContactAddUpdateViewModel contactAddUpdateVM)
+        {
+            using (SMSPortalDBEntities db = new SMSPortalDBEntities())
+            {
+                try
+                {
+                    Contact contact = getContactById(contactAddUpdateVM.Id);
+                    if (contact != null)
+                    {
+                        contact.TFName = contactAddUpdateVM.Name;
+                        contact.TFFamily = contactAddUpdateVM.Family;
+                        contact.TFEmail = contactAddUpdateVM.Email;
+                        contact.TFAddress = contactAddUpdateVM.Address;
+                        contact.TFCompany_Id = db.Companies.FirstOrDefault(x => x.TFId == contactAddUpdateVM.SelectedCompanyId).TFId;
+
+                        db.Entry(contact).State = EntityState.Modified;
+
+                        List<Phone> lstPrePhones = (from x in db.Phones where x.TFContact_Id == contact.TFId select x).ToList();
+                        foreach (Phone phone in lstPrePhones)
+                        {
+                            phone.TFContact_Id = null;
+                            db.Entry(phone).State = EntityState.Modified;
+                        }
+                        foreach (string number in contactAddUpdateVM.Numbers)
+                        {
+                            Phone phone = (from x in db.Phones where x.TFNumber == number select x).FirstOrDefault();
+                            if (phone != null)
+                            {
+                                phone.TFContact_Id = contactAddUpdateVM.Id;
+                                db.Entry(phone).State = EntityState.Modified;
+                            }
+                            else
+                            {
+                                db.Phones.Add(new Phone()
+                                {
+                                    TFId = Guid.NewGuid(),
+                                    TFNumber = number,
+                                    TFContact_Id = contactAddUpdateVM.Id
+                                });
+                            }
+                            
+                        }
+
+
+                        db.SaveChanges();
+                        return true;
+                    }
+                    else
+                        return false;
+                }
+                catch (Exception e)
+                {
+                    return false;
+                }
+
+            }
+        }
+
+
+        public Contact getContactById(Guid id)
+        {
+
+            using (SMSPortalDBEntities db = new SMSPortalDBEntities())
+            {
+                Contact contact = db.Contacts.FirstOrDefault(x => x.TFId == id);
+                return contact;
+            }
+
+        }
+
+        public ContactAddUpdateViewModel getContactViewModelById(Guid id)
+        {
+
+            using (SMSPortalDBEntities db = new SMSPortalDBEntities())
+            {
+                Contact contact = db.Contacts.FirstOrDefault(x => x.TFId == id);
+
+
+                if (contact != null)
+                {
+
+                    return new ContactAddUpdateViewModel()
+                    {
+                        Id = contact.TFId,
+                        Name = contact.TFName,
+                        Family = contact.TFFamily,
+                        Address = contact.TFAddress,
+                        Email = contact.TFEmail,
+                        CompanyList = getSelectListItemsForCompanies(),
+                        SelectedCompanyId = db.Companies.FirstOrDefault(x => x.TFId == contact.TFCompany_Id).TFId,
+                        Numbers = (from x in db.Phones where x.TFContact_Id == contact.TFId select x.TFNumber).ToList()
+                    };
+
+
+                }
+
+                return null;
+            }
+
+        }
+
+        public List<SelectListItem> getSelectListItemsForCompanies()
+        {
+<<<<<<< HEAD
+            return new CompanyBusinessLayer().getAllCompanies().Select(x => new SelectListItem
+=======
+            return new CompanyBusinessLayer().getCompanies().Select(x => new SelectListItem
+>>>>>>> c512f9477fc46f8d77f350d9e1405d63131b9f74
+            {
+                Text = x.TFName,
+                Value = x.TFId.ToString()
+            }).ToList();
+
+
+        }
+
+        public void deleteContactById(Guid _id)
+        {
+            try
+            {
+                using (SMSPortalDBEntities db = new SMSPortalDBEntities())
+                {
+                    Contact contact = db.Contacts.FirstOrDefault(x => x.TFId == _id);
+                    db.Contacts.Remove(contact);
+
+                    List<Phone> lstPhones = (from x in db.Phones where x.TFContact_Id == _id select x).ToList();
+
+                    foreach (Phone phone in lstPhones)
+                    {
+                        phone.TFContact_Id = null;
+
+                    }
+
+                    db.SaveChanges();
+                }
+            }
+            catch { }
+        }
+
+
+    }
+}

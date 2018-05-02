@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/SMSPortalCross" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/SMSPortalCross" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="Enums.Schedule">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="Once" />
+      <xs:enumeration value="Daily" />
+      <xs:enumeration value="WeekLy" />
+      <xs:enumeration value="Monthly" />
+      <xs:enumeration value="NowANDDaily" />
+      <xs:enumeration value="NowANDWeekly" />
+      <xs:enumeration value="NowANDMonthly" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Enums.Schedule" nillable="true" type="tns:Enums.Schedule" />
+</xs:schema>

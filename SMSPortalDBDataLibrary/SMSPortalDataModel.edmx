@@ -1,0 +1,1165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SMSPortalDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="TFId" />
+          </Key>
+          <Property Name="TFId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TFName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TFAddress" Type="nvarchar(max)" />
+          <Property Name="TFPhone" Type="nvarchar(max)" />
+          <Property Name="TFActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="TFId" />
+          </Key>
+          <Property Name="TFId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TFName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="TFFamily" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="TFEmail" Type="varchar" MaxLength="30" />
+          <Property Name="TFAddress" Type="nvarchar(max)" />
+          <Property Name="TFActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Contact_Company">
+          <Key>
+            <PropertyRef Name="TFId" />
+          </Key>
+          <Property Name="TFId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TFContact_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TFCompany_Id" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Inbox">
+          <Key>
+            <PropertyRef Name="TFId" />
+          </Key>
+          <Property Name="TFId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TFMessage" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="TFSenderNumber" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="TFSim_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TFDateTime" Type="datetime" Nullable="false" />
+          <Property Name="TFDateTimeFA" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TFIsRead" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="TFId" />
+          </Key>
+          <Property Name="TFId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TFContent" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="TFDateTimeCreate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Phone">
+          <Key>
+            <PropertyRef Name="TFId" />
+          </Key>
+          <Property Name="TFId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TFNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TFType" Type="nvarchar" MaxLength="50" />
+          <Property Name="TFContact_Id" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="Queue">
+          <Key>
+            <PropertyRef Name="TFId" />
+          </Key>
+          <Property Name="TFId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TFMessage_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TFDateTimeCreate" Type="datetime" Nullable="false" />
+          <Property Name="TFDateTimeCreateFA" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TFDateTimeRequest" Type="datetime" Nullable="false" />
+          <Property Name="TFDateTimeRequestFA" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TFScheduleType" Type="int" Nullable="false" />
+          <Property Name="TFUser_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TFEnable" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Queue_Phone">
+          <Key>
+            <PropertyRef Name="TFId" />
+          </Key>
+          <Property Name="TFId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TFQueue_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TFPhone_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TFIsUnderProcess" Type="bit" Nullable="false" />
+          <Property Name="TFEnable" Type="bit" Nullable="false" />
+          <Property Name="TFActive" Type="bit" Nullable="false" />
+          <Property Name="TFError" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SendBox">
+          <Key>
+            <PropertyRef Name="TFId" />
+          </Key>
+          <Property Name="TFId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TFMessage_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TFUser_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TFQueue_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TFDateTimeCreate" Type="datetime" Nullable="false" />
+          <Property Name="TFDateTimeCreateFA" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SendBox_Phone">
+          <Key>
+            <PropertyRef Name="TFId" />
+          </Key>
+          <Property Name="TFId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TFSendBox_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TFPhone_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TFSim_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TFDateTimeSend" Type="datetime" Nullable="false" />
+          <Property Name="TFDateTimeSendFA" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TFGSM_Id" Type="int" />
+          <Property Name="TFIsDelivered" Type="bit" Nullable="false" />
+          <Property Name="TFDateTimeSendGSM" Type="datetime" />
+          <Property Name="TFDateTimeSendGSMFA" Type="nvarchar" MaxLength="50" />
+          <Property Name="TFDateTimeDelivery" Type="datetime" />
+          <Property Name="TFDateTimeDeliveryFA" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SIM">
+          <Key>
+            <PropertyRef Name="TFId" />
+          </Key>
+          <Property Name="TFId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TFNumber" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="TFCharge" Type="int" />
+          <Property Name="TFPort" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SIM_User">
+          <Key>
+            <PropertyRef Name="TFId" />
+          </Key>
+          <Property Name="TFId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TFSIM_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TFUser_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TFMax" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="TFId" />
+          </Key>
+          <Property Name="TFId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TFUserName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="TFPassword" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TFName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="TFFamily" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="TFUserLevel" Type="int" Nullable="false" />
+          <Property Name="TFIsFirstLogin" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USSD">
+          <Key>
+            <PropertyRef Name="TFId" />
+          </Key>
+          <Property Name="TFId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TFSim_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TFSend" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TFReceive" Type="nvarchar(max)" />
+          <Property Name="TFDTSend" Type="datetime" Nullable="false" />
+          <Property Name="TFDTSendFa" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TFIsPrefred" Type="bit" Nullable="false" />
+          <Property Name="TFPreferdTitle" Type="nvarchar" MaxLength="50" />
+          <Property Name="TFIsSent" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Contact_Company_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="Contact_Company" Type="Self.Contact_Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="TFId" />
+            </Principal>
+            <Dependent Role="Contact_Company">
+              <PropertyRef Name="TFCompany_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contact_Company_Contact">
+          <End Role="Contact" Type="Self.Contact" Multiplicity="1" />
+          <End Role="Contact_Company" Type="Self.Contact_Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="TFId" />
+            </Principal>
+            <Dependent Role="Contact_Company">
+              <PropertyRef Name="TFContact_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inbox_SIM">
+          <End Role="SIM" Type="Self.SIM" Multiplicity="1" />
+          <End Role="Inbox" Type="Self.Inbox" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SIM">
+              <PropertyRef Name="TFId" />
+            </Principal>
+            <Dependent Role="Inbox">
+              <PropertyRef Name="TFSim_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Phone_Contact">
+          <End Role="Contact" Type="Self.Contact" Multiplicity="0..1" />
+          <End Role="Phone" Type="Self.Phone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="TFId" />
+            </Principal>
+            <Dependent Role="Phone">
+              <PropertyRef Name="TFContact_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Queue_Message">
+          <End Role="Message" Type="Self.Message" Multiplicity="1" />
+          <End Role="Queue" Type="Self.Queue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Message">
+              <PropertyRef Name="TFId" />
+            </Principal>
+            <Dependent Role="Queue">
+              <PropertyRef Name="TFMessage_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Queue_Phone_Phone">
+          <End Role="Phone" Type="Self.Phone" Multiplicity="1" />
+          <End Role="Queue_Phone" Type="Self.Queue_Phone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Phone">
+              <PropertyRef Name="TFId" />
+            </Principal>
+            <Dependent Role="Queue_Phone">
+              <PropertyRef Name="TFPhone_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Queue_Phone_Queue">
+          <End Role="Queue" Type="Self.Queue" Multiplicity="1" />
+          <End Role="Queue_Phone" Type="Self.Queue_Phone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Queue">
+              <PropertyRef Name="TFId" />
+            </Principal>
+            <Dependent Role="Queue_Phone">
+              <PropertyRef Name="TFQueue_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Queue_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Queue" Type="Self.Queue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="TFId" />
+            </Principal>
+            <Dependent Role="Queue">
+              <PropertyRef Name="TFUser_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SendBox_Message">
+          <End Role="Message" Type="Self.Message" Multiplicity="1" />
+          <End Role="SendBox" Type="Self.SendBox" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Message">
+              <PropertyRef Name="TFId" />
+            </Principal>
+            <Dependent Role="SendBox">
+              <PropertyRef Name="TFMessage_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SendBox_Phone_Phone">
+          <End Role="Phone" Type="Self.Phone" Multiplicity="1" />
+          <End Role="SendBox_Phone" Type="Self.SendBox_Phone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Phone">
+              <PropertyRef Name="TFId" />
+            </Principal>
+            <Dependent Role="SendBox_Phone">
+              <PropertyRef Name="TFPhone_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SendBox_Phone_SendBox">
+          <End Role="SendBox" Type="Self.SendBox" Multiplicity="1" />
+          <End Role="SendBox_Phone" Type="Self.SendBox_Phone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SendBox">
+              <PropertyRef Name="TFId" />
+            </Principal>
+            <Dependent Role="SendBox_Phone">
+              <PropertyRef Name="TFSendBox_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SendBox_Phone_SIM">
+          <End Role="SIM" Type="Self.SIM" Multiplicity="1" />
+          <End Role="SendBox_Phone" Type="Self.SendBox_Phone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SIM">
+              <PropertyRef Name="TFId" />
+            </Principal>
+            <Dependent Role="SendBox_Phone">
+              <PropertyRef Name="TFSim_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SendBox_Queue">
+          <End Role="Queue" Type="Self.Queue" Multiplicity="1" />
+          <End Role="SendBox" Type="Self.SendBox" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Queue">
+              <PropertyRef Name="TFId" />
+            </Principal>
+            <Dependent Role="SendBox">
+              <PropertyRef Name="TFQueue_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SIM_User_SIM">
+          <End Role="SIM" Type="Self.SIM" Multiplicity="1" />
+          <End Role="SIM_User" Type="Self.SIM_User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SIM">
+              <PropertyRef Name="TFId" />
+            </Principal>
+            <Dependent Role="SIM_User">
+              <PropertyRef Name="TFSIM_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SIM_User_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="SIM_User" Type="Self.SIM_User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="TFId" />
+            </Principal>
+            <Dependent Role="SIM_User">
+              <PropertyRef Name="TFUser_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USSD_SIM">
+          <End Role="SIM" Type="Self.SIM" Multiplicity="1" />
+          <End Role="USSD" Type="Self.USSD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SIM">
+              <PropertyRef Name="TFId" />
+            </Principal>
+            <Dependent Role="USSD">
+              <PropertyRef Name="TFSim_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SMSPortalDBModelStoreContainer">
+          <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contact_Company" EntityType="Self.Contact_Company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Inbox" EntityType="Self.Inbox" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Message" EntityType="Self.Message" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Phone" EntityType="Self.Phone" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Queue" EntityType="Self.Queue" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Queue_Phone" EntityType="Self.Queue_Phone" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SendBox" EntityType="Self.SendBox" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SendBox_Phone" EntityType="Self.SendBox_Phone" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SIM" EntityType="Self.SIM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SIM_User" EntityType="Self.SIM_User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USSD" EntityType="Self.USSD" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Contact_Company_Company" Association="Self.FK_Contact_Company_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="Contact_Company" EntitySet="Contact_Company" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contact_Company_Contact" Association="Self.FK_Contact_Company_Contact">
+            <End Role="Contact" EntitySet="Contact" />
+            <End Role="Contact_Company" EntitySet="Contact_Company" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inbox_SIM" Association="Self.FK_Inbox_SIM">
+            <End Role="SIM" EntitySet="SIM" />
+            <End Role="Inbox" EntitySet="Inbox" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Phone_Contact" Association="Self.FK_Phone_Contact">
+            <End Role="Contact" EntitySet="Contact" />
+            <End Role="Phone" EntitySet="Phone" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Queue_Message" Association="Self.FK_Queue_Message">
+            <End Role="Message" EntitySet="Message" />
+            <End Role="Queue" EntitySet="Queue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Queue_Phone_Phone" Association="Self.FK_Queue_Phone_Phone">
+            <End Role="Phone" EntitySet="Phone" />
+            <End Role="Queue_Phone" EntitySet="Queue_Phone" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Queue_Phone_Queue" Association="Self.FK_Queue_Phone_Queue">
+            <End Role="Queue" EntitySet="Queue" />
+            <End Role="Queue_Phone" EntitySet="Queue_Phone" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Queue_User" Association="Self.FK_Queue_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Queue" EntitySet="Queue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SendBox_Message" Association="Self.FK_SendBox_Message">
+            <End Role="Message" EntitySet="Message" />
+            <End Role="SendBox" EntitySet="SendBox" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SendBox_Phone_Phone" Association="Self.FK_SendBox_Phone_Phone">
+            <End Role="Phone" EntitySet="Phone" />
+            <End Role="SendBox_Phone" EntitySet="SendBox_Phone" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SendBox_Phone_SendBox" Association="Self.FK_SendBox_Phone_SendBox">
+            <End Role="SendBox" EntitySet="SendBox" />
+            <End Role="SendBox_Phone" EntitySet="SendBox_Phone" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SendBox_Phone_SIM" Association="Self.FK_SendBox_Phone_SIM">
+            <End Role="SIM" EntitySet="SIM" />
+            <End Role="SendBox_Phone" EntitySet="SendBox_Phone" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SendBox_Queue" Association="Self.FK_SendBox_Queue">
+            <End Role="Queue" EntitySet="Queue" />
+            <End Role="SendBox" EntitySet="SendBox" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SIM_User_SIM" Association="Self.FK_SIM_User_SIM">
+            <End Role="SIM" EntitySet="SIM" />
+            <End Role="SIM_User" EntitySet="SIM_User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SIM_User_User" Association="Self.FK_SIM_User_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="SIM_User" EntitySet="SIM_User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USSD_SIM" Association="Self.FK_USSD_SIM">
+            <End Role="SIM" EntitySet="SIM" />
+            <End Role="USSD" EntitySet="USSD" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SMSPortalDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SMSPortalDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Companies" EntityType="SMSPortalDBModel.Company" />
+          <EntitySet Name="Contacts" EntityType="SMSPortalDBModel.Contact" />
+          <EntitySet Name="Contact_Company" EntityType="SMSPortalDBModel.Contact_Company" />
+          <EntitySet Name="Inboxes" EntityType="SMSPortalDBModel.Inbox" />
+          <EntitySet Name="Messages" EntityType="SMSPortalDBModel.Message" />
+          <EntitySet Name="Phones" EntityType="SMSPortalDBModel.Phone" />
+          <EntitySet Name="Queues" EntityType="SMSPortalDBModel.Queue" />
+          <EntitySet Name="SendBoxes" EntityType="SMSPortalDBModel.SendBox" />
+          <EntitySet Name="SendBox_Phone" EntityType="SMSPortalDBModel.SendBox_Phone" />
+          <EntitySet Name="SIMs" EntityType="SMSPortalDBModel.SIM" />
+          <EntitySet Name="SIM_User" EntityType="SMSPortalDBModel.SIM_User" />
+          <EntitySet Name="sysdiagrams" EntityType="SMSPortalDBModel.sysdiagram" />
+          <EntitySet Name="Users" EntityType="SMSPortalDBModel.User" />
+          <AssociationSet Name="FK_Contact_Company_Company" Association="SMSPortalDBModel.FK_Contact_Company_Company">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="Contact_Company" EntitySet="Contact_Company" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contact_Company_Contact" Association="SMSPortalDBModel.FK_Contact_Company_Contact">
+            <End Role="Contact" EntitySet="Contacts" />
+            <End Role="Contact_Company" EntitySet="Contact_Company" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Phone_Contact" Association="SMSPortalDBModel.FK_Phone_Contact">
+            <End Role="Contact" EntitySet="Contacts" />
+            <End Role="Phone" EntitySet="Phones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inbox_SIM" Association="SMSPortalDBModel.FK_Inbox_SIM">
+            <End Role="SIM" EntitySet="SIMs" />
+            <End Role="Inbox" EntitySet="Inboxes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Queue_Message" Association="SMSPortalDBModel.FK_Queue_Message">
+            <End Role="Message" EntitySet="Messages" />
+            <End Role="Queue" EntitySet="Queues" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SendBox_Message" Association="SMSPortalDBModel.FK_SendBox_Message">
+            <End Role="Message" EntitySet="Messages" />
+            <End Role="SendBox" EntitySet="SendBoxes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SendBox_Phone_Phone" Association="SMSPortalDBModel.FK_SendBox_Phone_Phone">
+            <End Role="Phone" EntitySet="Phones" />
+            <End Role="SendBox_Phone" EntitySet="SendBox_Phone" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Queue_User" Association="SMSPortalDBModel.FK_Queue_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Queue" EntitySet="Queues" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SendBox_Queue" Association="SMSPortalDBModel.FK_SendBox_Queue">
+            <End Role="Queue" EntitySet="Queues" />
+            <End Role="SendBox" EntitySet="SendBoxes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SendBox_Phone_SendBox" Association="SMSPortalDBModel.FK_SendBox_Phone_SendBox">
+            <End Role="SendBox" EntitySet="SendBoxes" />
+            <End Role="SendBox_Phone" EntitySet="SendBox_Phone" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SendBox_Phone_SIM" Association="SMSPortalDBModel.FK_SendBox_Phone_SIM">
+            <End Role="SIM" EntitySet="SIMs" />
+            <End Role="SendBox_Phone" EntitySet="SendBox_Phone" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SIM_User_SIM" Association="SMSPortalDBModel.FK_SIM_User_SIM">
+            <End Role="SIM" EntitySet="SIMs" />
+            <End Role="SIM_User" EntitySet="SIM_User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SIM_User_User" Association="SMSPortalDBModel.FK_SIM_User_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="SIM_User" EntitySet="SIM_User" />
+          </AssociationSet>
+          <EntitySet Name="Queue_Phone" EntityType="SMSPortalDBModel.Queue_Phone" />
+          <AssociationSet Name="FK_Queue_Phone_Phone" Association="SMSPortalDBModel.FK_Queue_Phone_Phone">
+            <End Role="Phone" EntitySet="Phones" />
+            <End Role="Queue_Phone" EntitySet="Queue_Phone" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Queue_Phone_Queue" Association="SMSPortalDBModel.FK_Queue_Phone_Queue">
+            <End Role="Queue" EntitySet="Queues" />
+            <End Role="Queue_Phone" EntitySet="Queue_Phone" />
+          </AssociationSet>
+          <EntitySet Name="USSDs" EntityType="SMSPortalDBModel.USSD" />
+          <AssociationSet Name="FK_USSD_SIM" Association="SMSPortalDBModel.FK_USSD_SIM">
+            <End Role="SIM" EntitySet="SIMs" />
+            <End Role="USSD" EntitySet="USSDs" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="TFId" />
+          </Key>
+          <Property Name="TFId" Type="Guid" Nullable="false" />
+          <Property Name="TFName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TFAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TFPhone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TFActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Contact_Company" Relationship="SMSPortalDBModel.FK_Contact_Company_Company" FromRole="Company" ToRole="Contact_Company" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="TFId" />
+          </Key>
+          <Property Name="TFId" Type="Guid" Nullable="false" />
+          <Property Name="TFName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TFFamily" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="TFEmail" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="TFAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TFActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Contact_Company" Relationship="SMSPortalDBModel.FK_Contact_Company_Contact" FromRole="Contact" ToRole="Contact_Company" />
+          <NavigationProperty Name="Phones" Relationship="SMSPortalDBModel.FK_Phone_Contact" FromRole="Contact" ToRole="Phone" />
+        </EntityType>
+        <EntityType Name="Contact_Company">
+          <Key>
+            <PropertyRef Name="TFId" />
+          </Key>
+          <Property Name="TFId" Type="Guid" Nullable="false" />
+          <Property Name="TFContact_Id" Type="Guid" Nullable="false" />
+          <Property Name="TFCompany_Id" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Company" Relationship="SMSPortalDBModel.FK_Contact_Company_Company" FromRole="Contact_Company" ToRole="Company" />
+          <NavigationProperty Name="Contact" Relationship="SMSPortalDBModel.FK_Contact_Company_Contact" FromRole="Contact_Company" ToRole="Contact" />
+        </EntityType>
+        <EntityType Name="Inbox">
+          <Key>
+            <PropertyRef Name="TFId" />
+          </Key>
+          <Property Name="TFId" Type="Guid" Nullable="false" />
+          <Property Name="TFMessage" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TFSenderNumber" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="TFSim_Id" Type="Guid" Nullable="false" />
+          <Property Name="TFDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TFDateTimeFA" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TFIsRead" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="SIM" Relationship="SMSPortalDBModel.FK_Inbox_SIM" FromRole="Inbox" ToRole="SIM" />
+        </EntityType>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="TFId" />
+          </Key>
+          <Property Name="TFId" Type="Guid" Nullable="false" />
+          <Property Name="TFContent" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TFDateTimeCreate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Queues" Relationship="SMSPortalDBModel.FK_Queue_Message" FromRole="Message" ToRole="Queue" />
+          <NavigationProperty Name="SendBoxes" Relationship="SMSPortalDBModel.FK_SendBox_Message" FromRole="Message" ToRole="SendBox" />
+        </EntityType>
+        <EntityType Name="Phone">
+          <Key>
+            <PropertyRef Name="TFId" />
+          </Key>
+          <Property Name="TFId" Type="Guid" Nullable="false" />
+          <Property Name="TFNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TFType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TFContact_Id" Type="Guid" />
+          <NavigationProperty Name="Contact" Relationship="SMSPortalDBModel.FK_Phone_Contact" FromRole="Phone" ToRole="Contact" />
+          <NavigationProperty Name="SendBox_Phone" Relationship="SMSPortalDBModel.FK_SendBox_Phone_Phone" FromRole="Phone" ToRole="SendBox_Phone" />
+          <NavigationProperty Name="Queue_Phone" Relationship="SMSPortalDBModel.FK_Queue_Phone_Phone" FromRole="Phone" ToRole="Queue_Phone" />
+        </EntityType>
+        <EntityType Name="Queue">
+          <Key>
+            <PropertyRef Name="TFId" />
+          </Key>
+          <Property Name="TFId" Type="Guid" Nullable="false" />
+          <Property Name="TFMessage_Id" Type="Guid" Nullable="false" />
+          <Property Name="TFDateTimeCreate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TFDateTimeCreateFA" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TFDateTimeRequest" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TFDateTimeRequestFA" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TFScheduleType" Type="Int32" Nullable="false" />
+          <Property Name="TFUser_Id" Type="Guid" Nullable="false" />
+          <Property Name="TFEnable" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Message" Relationship="SMSPortalDBModel.FK_Queue_Message" FromRole="Queue" ToRole="Message" />
+          <NavigationProperty Name="User" Relationship="SMSPortalDBModel.FK_Queue_User" FromRole="Queue" ToRole="User" />
+          <NavigationProperty Name="SendBoxes" Relationship="SMSPortalDBModel.FK_SendBox_Queue" FromRole="Queue" ToRole="SendBox" />
+          <NavigationProperty Name="Queue_Phone" Relationship="SMSPortalDBModel.FK_Queue_Phone_Queue" FromRole="Queue" ToRole="Queue_Phone" />
+        </EntityType>
+        <EntityType Name="SendBox">
+          <Key>
+            <PropertyRef Name="TFId" />
+          </Key>
+          <Property Name="TFId" Type="Guid" Nullable="false" />
+          <Property Name="TFMessage_Id" Type="Guid" Nullable="false" />
+          <Property Name="TFUser_Id" Type="Guid" Nullable="false" />
+          <Property Name="TFQueue_Id" Type="Guid" Nullable="false" />
+          <Property Name="TFDateTimeCreate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TFDateTimeCreateFA" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Message" Relationship="SMSPortalDBModel.FK_SendBox_Message" FromRole="SendBox" ToRole="Message" />
+          <NavigationProperty Name="Queue" Relationship="SMSPortalDBModel.FK_SendBox_Queue" FromRole="SendBox" ToRole="Queue" />
+          <NavigationProperty Name="SendBox_Phone" Relationship="SMSPortalDBModel.FK_SendBox_Phone_SendBox" FromRole="SendBox" ToRole="SendBox_Phone" />
+        </EntityType>
+        <EntityType Name="SendBox_Phone">
+          <Key>
+            <PropertyRef Name="TFId" />
+          </Key>
+          <Property Name="TFId" Type="Guid" Nullable="false" />
+          <Property Name="TFSendBox_Id" Type="Guid" Nullable="false" />
+          <Property Name="TFPhone_Id" Type="Guid" Nullable="false" />
+          <Property Name="TFSim_Id" Type="Guid" Nullable="false" />
+          <Property Name="TFDateTimeSend" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TFDateTimeSendFA" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TFGSM_Id" Type="Int32" />
+          <Property Name="TFIsDelivered" Type="Boolean" Nullable="false" />
+          <Property Name="TFDateTimeSendGSM" Type="DateTime" Precision="3" />
+          <Property Name="TFDateTimeSendGSMFA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TFDateTimeDelivery" Type="DateTime" Precision="3" />
+          <Property Name="TFDateTimeDeliveryFA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Phone" Relationship="SMSPortalDBModel.FK_SendBox_Phone_Phone" FromRole="SendBox_Phone" ToRole="Phone" />
+          <NavigationProperty Name="SendBox" Relationship="SMSPortalDBModel.FK_SendBox_Phone_SendBox" FromRole="SendBox_Phone" ToRole="SendBox" />
+          <NavigationProperty Name="SIM" Relationship="SMSPortalDBModel.FK_SendBox_Phone_SIM" FromRole="SendBox_Phone" ToRole="SIM" />
+        </EntityType>
+        <EntityType Name="SIM">
+          <Key>
+            <PropertyRef Name="TFId" />
+          </Key>
+          <Property Name="TFId" Type="Guid" Nullable="false" />
+          <Property Name="TFNumber" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="TFCharge" Type="Int32" />
+          <Property Name="TFPort" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Inboxes" Relationship="SMSPortalDBModel.FK_Inbox_SIM" FromRole="SIM" ToRole="Inbox" />
+          <NavigationProperty Name="SendBox_Phone" Relationship="SMSPortalDBModel.FK_SendBox_Phone_SIM" FromRole="SIM" ToRole="SendBox_Phone" />
+          <NavigationProperty Name="SIM_User" Relationship="SMSPortalDBModel.FK_SIM_User_SIM" FromRole="SIM" ToRole="SIM_User" />
+          <NavigationProperty Name="USSDs" Relationship="SMSPortalDBModel.FK_USSD_SIM" FromRole="SIM" ToRole="USSD" />
+        </EntityType>
+        <EntityType Name="SIM_User">
+          <Key>
+            <PropertyRef Name="TFId" />
+          </Key>
+          <Property Name="TFId" Type="Guid" Nullable="false" />
+          <Property Name="TFSIM_Id" Type="Guid" Nullable="false" />
+          <Property Name="TFUser_Id" Type="Guid" Nullable="false" />
+          <Property Name="TFMax" Type="Int32" />
+          <NavigationProperty Name="SIM" Relationship="SMSPortalDBModel.FK_SIM_User_SIM" FromRole="SIM_User" ToRole="SIM" />
+          <NavigationProperty Name="User" Relationship="SMSPortalDBModel.FK_SIM_User_User" FromRole="SIM_User" ToRole="User" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="TFId" />
+          </Key>
+          <Property Name="TFId" Type="Guid" Nullable="false" />
+          <Property Name="TFUserName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TFPassword" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TFName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TFFamily" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="TFUserLevel" Type="Int32" Nullable="false" />
+          <Property Name="TFIsFirstLogin" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Queues" Relationship="SMSPortalDBModel.FK_Queue_User" FromRole="User" ToRole="Queue" />
+          <NavigationProperty Name="SIM_User" Relationship="SMSPortalDBModel.FK_SIM_User_User" FromRole="User" ToRole="SIM_User" />
+        </EntityType>
+        <Association Name="FK_Contact_Company_Company">
+          <End Type="SMSPortalDBModel.Company" Role="Company" Multiplicity="1" />
+          <End Type="SMSPortalDBModel.Contact_Company" Role="Contact_Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="TFId" />
+            </Principal>
+            <Dependent Role="Contact_Company">
+              <PropertyRef Name="TFCompany_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contact_Company_Contact">
+          <End Type="SMSPortalDBModel.Contact" Role="Contact" Multiplicity="1" />
+          <End Type="SMSPortalDBModel.Contact_Company" Role="Contact_Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="TFId" />
+            </Principal>
+            <Dependent Role="Contact_Company">
+              <PropertyRef Name="TFContact_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Phone_Contact">
+          <End Type="SMSPortalDBModel.Contact" Role="Contact" Multiplicity="0..1" />
+          <End Type="SMSPortalDBModel.Phone" Role="Phone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="TFId" />
+            </Principal>
+            <Dependent Role="Phone">
+              <PropertyRef Name="TFContact_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inbox_SIM">
+          <End Type="SMSPortalDBModel.SIM" Role="SIM" Multiplicity="1" />
+          <End Type="SMSPortalDBModel.Inbox" Role="Inbox" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SIM">
+              <PropertyRef Name="TFId" />
+            </Principal>
+            <Dependent Role="Inbox">
+              <PropertyRef Name="TFSim_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Queue_Message">
+          <End Type="SMSPortalDBModel.Message" Role="Message" Multiplicity="1" />
+          <End Type="SMSPortalDBModel.Queue" Role="Queue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Message">
+              <PropertyRef Name="TFId" />
+            </Principal>
+            <Dependent Role="Queue">
+              <PropertyRef Name="TFMessage_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SendBox_Message">
+          <End Type="SMSPortalDBModel.Message" Role="Message" Multiplicity="1" />
+          <End Type="SMSPortalDBModel.SendBox" Role="SendBox" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Message">
+              <PropertyRef Name="TFId" />
+            </Principal>
+            <Dependent Role="SendBox">
+              <PropertyRef Name="TFMessage_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SendBox_Phone_Phone">
+          <End Type="SMSPortalDBModel.Phone" Role="Phone" Multiplicity="1" />
+          <End Type="SMSPortalDBModel.SendBox_Phone" Role="SendBox_Phone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Phone">
+              <PropertyRef Name="TFId" />
+            </Principal>
+            <Dependent Role="SendBox_Phone">
+              <PropertyRef Name="TFPhone_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Queue_User">
+          <End Type="SMSPortalDBModel.User" Role="User" Multiplicity="1" />
+          <End Type="SMSPortalDBModel.Queue" Role="Queue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="TFId" />
+            </Principal>
+            <Dependent Role="Queue">
+              <PropertyRef Name="TFUser_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SendBox_Queue">
+          <End Type="SMSPortalDBModel.Queue" Role="Queue" Multiplicity="1" />
+          <End Type="SMSPortalDBModel.SendBox" Role="SendBox" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Queue">
+              <PropertyRef Name="TFId" />
+            </Principal>
+            <Dependent Role="SendBox">
+              <PropertyRef Name="TFQueue_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SendBox_Phone_SendBox">
+          <End Type="SMSPortalDBModel.SendBox" Role="SendBox" Multiplicity="1" />
+          <End Type="SMSPortalDBModel.SendBox_Phone" Role="SendBox_Phone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SendBox">
+              <PropertyRef Name="TFId" />
+            </Principal>
+            <Dependent Role="SendBox_Phone">
+              <PropertyRef Name="TFSendBox_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SendBox_Phone_SIM">
+          <End Type="SMSPortalDBModel.SIM" Role="SIM" Multiplicity="1" />
+          <End Type="SMSPortalDBModel.SendBox_Phone" Role="SendBox_Phone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SIM">
+              <PropertyRef Name="TFId" />
+            </Principal>
+            <Dependent Role="SendBox_Phone">
+              <PropertyRef Name="TFSim_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SIM_User_SIM">
+          <End Type="SMSPortalDBModel.SIM" Role="SIM" Multiplicity="1" />
+          <End Type="SMSPortalDBModel.SIM_User" Role="SIM_User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SIM">
+              <PropertyRef Name="TFId" />
+            </Principal>
+            <Dependent Role="SIM_User">
+              <PropertyRef Name="TFSIM_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SIM_User_User">
+          <End Type="SMSPortalDBModel.User" Role="User" Multiplicity="1" />
+          <End Type="SMSPortalDBModel.SIM_User" Role="SIM_User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="TFId" />
+            </Principal>
+            <Dependent Role="SIM_User">
+              <PropertyRef Name="TFUser_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Queue_Phone">
+          <Key>
+            <PropertyRef Name="TFId" />
+          </Key>
+          <Property Name="TFId" Type="Guid" Nullable="false" />
+          <Property Name="TFQueue_Id" Type="Guid" Nullable="false" />
+          <Property Name="TFPhone_Id" Type="Guid" Nullable="false" />
+          <Property Name="TFIsUnderProcess" Type="Boolean" Nullable="false" />
+          <Property Name="TFEnable" Type="Boolean" Nullable="false" />
+          <Property Name="TFActive" Type="Boolean" Nullable="false" />
+          <Property Name="TFError" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Phone" Relationship="SMSPortalDBModel.FK_Queue_Phone_Phone" FromRole="Queue_Phone" ToRole="Phone" />
+          <NavigationProperty Name="Queue" Relationship="SMSPortalDBModel.FK_Queue_Phone_Queue" FromRole="Queue_Phone" ToRole="Queue" />
+        </EntityType>
+        <Association Name="FK_Queue_Phone_Phone">
+          <End Type="SMSPortalDBModel.Phone" Role="Phone" Multiplicity="1" />
+          <End Type="SMSPortalDBModel.Queue_Phone" Role="Queue_Phone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Phone">
+              <PropertyRef Name="TFId" />
+            </Principal>
+            <Dependent Role="Queue_Phone">
+              <PropertyRef Name="TFPhone_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Queue_Phone_Queue">
+          <End Type="SMSPortalDBModel.Queue" Role="Queue" Multiplicity="1" />
+          <End Type="SMSPortalDBModel.Queue_Phone" Role="Queue_Phone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Queue">
+              <PropertyRef Name="TFId" />
+            </Principal>
+            <Dependent Role="Queue_Phone">
+              <PropertyRef Name="TFQueue_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="USSD">
+          <Key>
+            <PropertyRef Name="TFId" />
+          </Key>
+          <Property Name="TFId" Type="Guid" Nullable="false" />
+          <Property Name="TFSim_Id" Type="Guid" Nullable="false" />
+          <Property Name="TFSend" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TFReceive" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TFDTSend" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TFDTSendFa" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TFIsPrefred" Type="Boolean" Nullable="false" />
+          <Property Name="TFPreferdTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TFIsSent" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="SIM" Relationship="SMSPortalDBModel.FK_USSD_SIM" FromRole="USSD" ToRole="SIM" />
+        </EntityType>
+        <Association Name="FK_USSD_SIM">
+          <End Type="SMSPortalDBModel.SIM" Role="SIM" Multiplicity="1" />
+          <End Type="SMSPortalDBModel.USSD" Role="USSD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SIM">
+              <PropertyRef Name="TFId" />
+            </Principal>
+            <Dependent Role="USSD">
+              <PropertyRef Name="TFSim_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SMSPortalDBModelStoreContainer" CdmEntityContainer="SMSPortalDBEntities">
+          <EntitySetMapping Name="Companies">
+            <EntityTypeMapping TypeName="SMSPortalDBModel.Company">
+              <MappingFragment StoreEntitySet="Company">
+                <ScalarProperty Name="TFActive" ColumnName="TFActive" />
+                <ScalarProperty Name="TFPhone" ColumnName="TFPhone" />
+                <ScalarProperty Name="TFAddress" ColumnName="TFAddress" />
+                <ScalarProperty Name="TFName" ColumnName="TFName" />
+                <ScalarProperty Name="TFId" ColumnName="TFId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contacts">
+            <EntityTypeMapping TypeName="SMSPortalDBModel.Contact">
+              <MappingFragment StoreEntitySet="Contact">
+                <ScalarProperty Name="TFActive" ColumnName="TFActive" />
+                <ScalarProperty Name="TFAddress" ColumnName="TFAddress" />
+                <ScalarProperty Name="TFEmail" ColumnName="TFEmail" />
+                <ScalarProperty Name="TFFamily" ColumnName="TFFamily" />
+                <ScalarProperty Name="TFName" ColumnName="TFName" />
+                <ScalarProperty Name="TFId" ColumnName="TFId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contact_Company">
+            <EntityTypeMapping TypeName="SMSPortalDBModel.Contact_Company">
+              <MappingFragment StoreEntitySet="Contact_Company">
+                <ScalarProperty Name="TFCompany_Id" ColumnName="TFCompany_Id" />
+                <ScalarProperty Name="TFContact_Id" ColumnName="TFContact_Id" />
+                <ScalarProperty Name="TFId" ColumnName="TFId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Inboxes">
+            <EntityTypeMapping TypeName="SMSPortalDBModel.Inbox">
+              <MappingFragment StoreEntitySet="Inbox">
+                <ScalarProperty Name="TFIsRead" ColumnName="TFIsRead" />
+                <ScalarProperty Name="TFDateTimeFA" ColumnName="TFDateTimeFA" />
+                <ScalarProperty Name="TFDateTime" ColumnName="TFDateTime" />
+                <ScalarProperty Name="TFSim_Id" ColumnName="TFSim_Id" />
+                <ScalarProperty Name="TFSenderNumber" ColumnName="TFSenderNumber" />
+                <ScalarProperty Name="TFMessage" ColumnName="TFMessage" />
+                <ScalarProperty Name="TFId" ColumnName="TFId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Messages">
+            <EntityTypeMapping TypeName="SMSPortalDBModel.Message">
+              <MappingFragment StoreEntitySet="Message">
+                <ScalarProperty Name="TFDateTimeCreate" ColumnName="TFDateTimeCreate" />
+                <ScalarProperty Name="TFContent" ColumnName="TFContent" />
+                <ScalarProperty Name="TFId" ColumnName="TFId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Phones">
+            <EntityTypeMapping TypeName="SMSPortalDBModel.Phone">
+              <MappingFragment StoreEntitySet="Phone">
+                <ScalarProperty Name="TFContact_Id" ColumnName="TFContact_Id" />
+                <ScalarProperty Name="TFType" ColumnName="TFType" />
+                <ScalarProperty Name="TFNumber" ColumnName="TFNumber" />
+                <ScalarProperty Name="TFId" ColumnName="TFId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Queues">
+            <EntityTypeMapping TypeName="SMSPortalDBModel.Queue">
+              <MappingFragment StoreEntitySet="Queue">
+                <ScalarProperty Name="TFEnable" ColumnName="TFEnable" />
+                <ScalarProperty Name="TFUser_Id" ColumnName="TFUser_Id" />
+                <ScalarProperty Name="TFScheduleType" ColumnName="TFScheduleType" />
+                <ScalarProperty Name="TFDateTimeRequestFA" ColumnName="TFDateTimeRequestFA" />
+                <ScalarProperty Name="TFDateTimeRequest" ColumnName="TFDateTimeRequest" />
+                <ScalarProperty Name="TFDateTimeCreateFA" ColumnName="TFDateTimeCreateFA" />
+                <ScalarProperty Name="TFDateTimeCreate" ColumnName="TFDateTimeCreate" />
+                <ScalarProperty Name="TFMessage_Id" ColumnName="TFMessage_Id" />
+                <ScalarProperty Name="TFId" ColumnName="TFId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SendBoxes">
+            <EntityTypeMapping TypeName="SMSPortalDBModel.SendBox">
+              <MappingFragment StoreEntitySet="SendBox">
+                <ScalarProperty Name="TFDateTimeCreateFA" ColumnName="TFDateTimeCreateFA" />
+                <ScalarProperty Name="TFDateTimeCreate" ColumnName="TFDateTimeCreate" />
+                <ScalarProperty Name="TFQueue_Id" ColumnName="TFQueue_Id" />
+                <ScalarProperty Name="TFUser_Id" ColumnName="TFUser_Id" />
+                <ScalarProperty Name="TFMessage_Id" ColumnName="TFMessage_Id" />
+                <ScalarProperty Name="TFId" ColumnName="TFId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SendBox_Phone">
+            <EntityTypeMapping TypeName="SMSPortalDBModel.SendBox_Phone">
+              <MappingFragment StoreEntitySet="SendBox_Phone">
+                <ScalarProperty Name="TFDateTimeDeliveryFA" ColumnName="TFDateTimeDeliveryFA" />
+                <ScalarProperty Name="TFDateTimeDelivery" ColumnName="TFDateTimeDelivery" />
+                <ScalarProperty Name="TFDateTimeSendGSMFA" ColumnName="TFDateTimeSendGSMFA" />
+                <ScalarProperty Name="TFDateTimeSendGSM" ColumnName="TFDateTimeSendGSM" />
+                <ScalarProperty Name="TFIsDelivered" ColumnName="TFIsDelivered" />
+                <ScalarProperty Name="TFGSM_Id" ColumnName="TFGSM_Id" />
+                <ScalarProperty Name="TFDateTimeSendFA" ColumnName="TFDateTimeSendFA" />
+                <ScalarProperty Name="TFDateTimeSend" ColumnName="TFDateTimeSend" />
+                <ScalarProperty Name="TFSim_Id" ColumnName="TFSim_Id" />
+                <ScalarProperty Name="TFPhone_Id" ColumnName="TFPhone_Id" />
+                <ScalarProperty Name="TFSendBox_Id" ColumnName="TFSendBox_Id" />
+                <ScalarProperty Name="TFId" ColumnName="TFId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SIMs">
+            <EntityTypeMapping TypeName="SMSPortalDBModel.SIM">
+              <MappingFragment StoreEntitySet="SIM">
+                <ScalarProperty Name="TFPort" ColumnName="TFPort" />
+                <ScalarProperty Name="TFCharge" ColumnName="TFCharge" />
+                <ScalarProperty Name="TFNumber" ColumnName="TFNumber" />
+                <ScalarProperty Name="TFId" ColumnName="TFId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SIM_User">
+            <EntityTypeMapping TypeName="SMSPortalDBModel.SIM_User">
+              <MappingFragment StoreEntitySet="SIM_User">
+                <ScalarProperty Name="TFMax" ColumnName="TFMax" />
+                <ScalarProperty Name="TFUser_Id" ColumnName="TFUser_Id" />
+                <ScalarProperty Name="TFSIM_Id" ColumnName="TFSIM_Id" />
+                <ScalarProperty Name="TFId" ColumnName="TFId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="SMSPortalDBModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="SMSPortalDBModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="TFIsFirstLogin" ColumnName="TFIsFirstLogin" />
+                <ScalarProperty Name="TFUserLevel" ColumnName="TFUserLevel" />
+                <ScalarProperty Name="TFFamily" ColumnName="TFFamily" />
+                <ScalarProperty Name="TFName" ColumnName="TFName" />
+                <ScalarProperty Name="TFPassword" ColumnName="TFPassword" />
+                <ScalarProperty Name="TFUserName" ColumnName="TFUserName" />
+                <ScalarProperty Name="TFId" ColumnName="TFId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Queue_Phone">
+            <EntityTypeMapping TypeName="SMSPortalDBModel.Queue_Phone">
+              <MappingFragment StoreEntitySet="Queue_Phone">
+                <ScalarProperty Name="TFError" ColumnName="TFError" />
+                <ScalarProperty Name="TFActive" ColumnName="TFActive" />
+                <ScalarProperty Name="TFEnable" ColumnName="TFEnable" />
+                <ScalarProperty Name="TFIsUnderProcess" ColumnName="TFIsUnderProcess" />
+                <ScalarProperty Name="TFPhone_Id" ColumnName="TFPhone_Id" />
+                <ScalarProperty Name="TFQueue_Id" ColumnName="TFQueue_Id" />
+                <ScalarProperty Name="TFId" ColumnName="TFId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USSDs">
+            <EntityTypeMapping TypeName="SMSPortalDBModel.USSD">
+              <MappingFragment StoreEntitySet="USSD">
+                <ScalarProperty Name="TFIsSent" ColumnName="TFIsSent" />
+                <ScalarProperty Name="TFPreferdTitle" ColumnName="TFPreferdTitle" />
+                <ScalarProperty Name="TFIsPrefred" ColumnName="TFIsPrefred" />
+                <ScalarProperty Name="TFDTSendFa" ColumnName="TFDTSendFa" />
+                <ScalarProperty Name="TFDTSend" ColumnName="TFDTSend" />
+                <ScalarProperty Name="TFReceive" ColumnName="TFReceive" />
+                <ScalarProperty Name="TFSend" ColumnName="TFSend" />
+                <ScalarProperty Name="TFSim_Id" ColumnName="TFSim_Id" />
+                <ScalarProperty Name="TFId" ColumnName="TFId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram DiagramId="031d1bfc70554cf0852ff12496bf6e01" Name="Diagram1">
+        <EntityTypeShape EntityType="SMSPortalDBModel.Company" Width="1.5" PointX="0.75" PointY="13" />
+        <EntityTypeShape EntityType="SMSPortalDBModel.Contact" Width="1.5" PointX="0.75" PointY="8.875" />
+        <EntityTypeShape EntityType="SMSPortalDBModel.Contact_Company" Width="1.5" PointX="3" PointY="12.125" />
+        <EntityTypeShape EntityType="SMSPortalDBModel.Inbox" Width="1.5" PointX="10.5" PointY="9" />
+        <EntityTypeShape EntityType="SMSPortalDBModel.Message" Width="1.5" PointX="0.75" PointY="5.125" />
+        <EntityTypeShape EntityType="SMSPortalDBModel.Phone" Width="1.5" PointX="3" PointY="9" />
+        <EntityTypeShape EntityType="SMSPortalDBModel.Queue" Width="1.5" PointX="3" PointY="4.375" />
+        <EntityTypeShape EntityType="SMSPortalDBModel.SendBox" Width="1.5" PointX="8.25" PointY="4.75" />
+        <EntityTypeShape EntityType="SMSPortalDBModel.SendBox_Phone" Width="1.5" PointX="10.5" PointY="4.125" />
+        <EntityTypeShape EntityType="SMSPortalDBModel.SIM" Width="1.5" PointX="8.25" PointY="1" />
+        <EntityTypeShape EntityType="SMSPortalDBModel.SIM_User" Width="1.5" PointX="10.5" PointY="1" />
+        <EntityTypeShape EntityType="SMSPortalDBModel.sysdiagram" Width="1.5" PointX="5.75" PointY="9.125" />
+        <EntityTypeShape EntityType="SMSPortalDBModel.User" Width="1.5" PointX="0.75" PointY="0.75" />
+        <AssociationConnector Association="SMSPortalDBModel.FK_Contact_Company_Company" />
+        <AssociationConnector Association="SMSPortalDBModel.FK_Contact_Company_Contact" />
+        <AssociationConnector Association="SMSPortalDBModel.FK_Phone_Contact" />
+        <AssociationConnector Association="SMSPortalDBModel.FK_Inbox_SIM" />
+        <AssociationConnector Association="SMSPortalDBModel.FK_Queue_Message" />
+        <AssociationConnector Association="SMSPortalDBModel.FK_SendBox_Message" />
+        <AssociationConnector Association="SMSPortalDBModel.FK_SendBox_Phone_Phone" />
+        <AssociationConnector Association="SMSPortalDBModel.FK_Queue_User" />
+        <AssociationConnector Association="SMSPortalDBModel.FK_SendBox_Queue" />
+        <AssociationConnector Association="SMSPortalDBModel.FK_SendBox_Phone_SendBox" />
+        <AssociationConnector Association="SMSPortalDBModel.FK_SendBox_Phone_SIM" />
+        <AssociationConnector Association="SMSPortalDBModel.FK_SIM_User_SIM" />
+        <AssociationConnector Association="SMSPortalDBModel.FK_SIM_User_User" />
+        <EntityTypeShape EntityType="SMSPortalDBModel.Queue_Phone" Width="1.5" PointX="5.25" PointY="5.5" />
+        <AssociationConnector Association="SMSPortalDBModel.FK_Queue_Phone_Phone" />
+        <AssociationConnector Association="SMSPortalDBModel.FK_Queue_Phone_Queue" />
+        <EntityTypeShape EntityType="SMSPortalDBModel.USSD" Width="1.5" PointX="10.5" PointY="12.75" />
+        <AssociationConnector Association="SMSPortalDBModel.FK_USSD_SIM" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

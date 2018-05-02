@@ -1,0 +1,302 @@
+﻿@using SMSPortalWebPanel.ViewModels
+@model NewMessageViewModel
+
+@section TitleSection{
+    ارسال پیام جدید
+}
+@section ActiveNewMessage{active}
+
+@section HeaderSection{
+
+    <link href="~/Content/datatables/dataTables.bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/plugins/datatables/jquery.dataTables.js"></script>
+    <script src="~/Scripts/plugins/datatables/dataTables.bootstrap.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <link href="~/Content/bootstrap-tag-input/bootstrap-tagsinput.css" rel="stylesheet" />
+    <script src="~/Content/bootstrap-tag-input/bootstrap-tagsinput.min.js"></script>
+    <script src="~/Content/Select2/select2.min.js"></script>
+    <link href="~/Content/Select2/select2.css" rel="stylesheet" />
+    <style type="text/css">
+        div .radio {
+            float: right;
+        }
+
+            div .radio label {
+                margin-left: 20px;
+            }
+
+        .radio + .radio {
+            margin-top: 10px !important;
+        }
+    </style>
+
+
+    <script language="javascript" type="text/javascript">
+
+        getContactsFromDBURL = "@Url.Action("getContacts" , "Contact")";
+        getCompanyListURL = "@Url.Action("getCompanies" , "Company")"
+        getCompanyContactsURL = "@Url.Action("getCompanyContacts", "Company")";
+        uploadFileURL = "@Url.Action("getFileData", "FileUpload")";
+        sendNewMessageURL = "@Url.Action("SendNewMessage", "NewMessage")";
+
+
+
+
+        $(document).ready(function () {
+
+            initiateItems();
+
+            getContactsDataFromDB();
+
+        });
+
+        function initiateItems() {
+
+            @if (!string.IsNullOrEmpty(Model.Message)){
+                <text>
+            $('#Message').html('@Model.Message')
+            </text>
+        }
+
+            @if (Model.Numbers != null && Model.Numbers.Count > 0){
+                foreach (string number in Model.Numbers) {
+                     <text>addToTags('@number', '@number');</text>
+                }
+            }
+
+            @switch (Model.RepeatType) {
+
+                case 0:
+                        <text> $("#once").prop("checked", true) </text>
+                    break;
+                case 1:
+                        <text> $("#daily").prop("checked", true) </text>
+                    break;
+                case 2:
+                        <text> $("#weekly").prop("checked", true) </text>
+                    break;
+                case 3:
+                        <text> $("#monthly").prop("checked", true) </text>
+                    break;
+                default:
+                        <text> $("#once").prop("checked", true) </text>
+                break;
+
+
+                }
+            @if (!string.IsNullOrEmpty(Model.StrDTSend)) {
+             <text> $("#StrDTSend").val('@Model.StrDTSend') </text>
+        }
+        }
+
+    </script>
+
+    <script src="~/Scripts/SendNewMessage.js"></script>
+
+}
+
+
+
+@section ContentBody{
+    <div class="row">
+
+        <div class="col-md-12">
+            <section class="panel">
+                <header class="panel-heading">
+                    پیام جدید
+                </header>
+
+                <header class="panel-heading tab-bg-dark-navy-blue tab-right ">
+                    <ul class="nav nav-tabs pull-right">
+                        <li class="active" onclick="getContactsDataFromDB();">
+                            <a data-toggle="tab" href="#tabContact">
+                                <i class="fa fa-user"></i>
+                                دفترچه تلفن
+                            </a>
+                        </li>
+                        <li onclick="getCompanyList();">
+                            <a data-toggle="tab" href="#tabCompany">
+                                <i class="fa fa-home"></i>
+                                سازمان
+                            </a>
+                        </li>
+
+                        <li class="">
+                            <a data-toggle="tab" href="#tabRange">
+                                <i class="fa fa-phone"></i>
+                                بازه شماره
+                            </a>
+                        </li>
+                        <li onclick="showFileContainer();">
+                            <a data-toggle="tab" href="#tabContact">
+                                <i class="fa fa-file"></i>
+                                فایل
+                            </a>
+                        </li>
+                    </ul>
+                </header>
+                <div class="panel-body">
+                    <div class="tab-content">
+                        <div id="tabContact" class="tab-pane active">
+
+                            <div id="fileContainer" class="form-group">
+
+                                <button type="submit" class="btn btn-success">
+                                    <label for="importFile" style="cursor:pointer">انتخاب فایل</label>
+                                </button>
+                                <input type="file" id="importFile" style="visibility:hidden;"  accept=".xls, .xlsx">
+                            </div>
+
+                            <table id="myDataTable" class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>نام</th>
+                                        <th>نام خانوادگی</th>
+                                        <th>ایمیل</th>
+                                        <th>تلفن</th>
+                                        <th>اضافه به لیست</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="contactBody"></tbody>
+                            </table>
+
+                            <button type="button" class="btn btn-primary btn-addon btn-sm" onclick="showAddAllModal();"><i class="fa fa-plus"></i>اضافه کردن همه</button>
+
+                        </div>
+
+
+                        <div id="tabCompany" class="tab-pane">
+                            <div class="col-lg-4">
+                                <div class="form-group">
+
+                                    <label for="companyDRP">سازمان:</label>
+                                    <select id="companyDRP" name="companyDRP"></select>
+
+                                </div>
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-primary btn-addon btn-sm" onclick="companyId = $('#companyDRP').val(); showModal('AddCompanyContacts' , 'همه افراد سازمان به لیست ارسال اضافه شوند؟') "><i class="fa fa-plus"></i>اضافه کردن از سازمان</button>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div id="tabRange" class="tab-pane">
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="StartNumber">شماره شروع:</label>
+                                    <input type="number" class="form-control" id="StartNumber" placeholder="09">
+                                </div>
+                                <div class="form-group">
+                                    <label for="FinishNumber">شماره پایان:</label>
+                                    <input type="number" class="form-control" id="FinishNumber" placeholder="09">
+                                </div>
+                                <button type="button" class="btn btn-primary btn-addon btn-sm" onclick="showModal('AddRange' , 'آیا بازه شماره ثبت شود؟ لطفا از  ورود شماره های با فرمت صحیح اطمینان حاصل کنید')"><i class="fa fa-plus"></i>ثبت بازه شماره</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="panel">
+                <header class="panel-heading">
+                    لیست شماره ها
+                </header>
+
+                <div class="panel-body">
+                    <div class="form-group">
+                        <input id="tags" type="text" data-role="tagsinput" />
+                        <script>
+                            var elt = $('#tags');
+                            elt.tagsinput({
+                                itemValue: 'value',
+                                itemText: 'text',
+
+                            });
+                        </script>
+                    </div>
+                    <div class="form-group">
+
+                        <button type="button" class="btn btn-danger" onclick="showclearTagsModal();">حذف همه</button>
+                    </div>
+                </div>
+            </section>
+            <section class="panel">
+                <header class="panel-heading">
+                    زمانبندی
+                </header>
+                <div class="panel-body">
+                    <div class="col-md-3">
+
+                        <div class="container" style="width:100%;">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon" data-MdDateTimePicker="true" data-targetselector="#StrDTSend" data-trigger="click" data-enabletimepicker="true">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </div>
+                                    <input type="text" class="form-control" id="StrDTSend" placeholder="تاریخ و زمان" />
+                                </div>
+                            </div>
+                        </div>
+
+                        @*<label for="SendDateTime">تاریخ ارسال:</label>
+                            <input type="datetime" class="form-control" id="StrDTSend" placeholder="yyyy/mm/dd hh:mm:ss">*@
+                    </div>
+
+                    <div class="col-md-8">
+                        <div class="radio">
+                            <label>
+                                بدون تکرار
+                                <input id="once" type="radio" name="RepeatType" value="0">
+
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input id="daily" type="radio" name="RepeatType" value="1">
+                                روزانه
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input id="weekly" type="radio" name="RepeatType" value="2">
+                                هفتگی
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input id="monthly" type="radio" name="RepeatType" value="3">
+                                ماهانه
+                            </label>
+                        </div>
+
+
+                    </div>
+                </div>
+            </section>
+            <section class="panel">
+                <header class="panel-heading">
+                    متن پیام
+                </header>
+
+                <div class="panel-body">
+
+                    <div class="col-lg-4">
+                        <textarea id="Message" rows="6" style="width:100%" placeholder="متن پیام را وارد کنید" maxlength="70"></textarea>
+                    </div>
+                    <div class="col-lg-4">
+                        <button type="button" class="btn btn-success" onclick="sendNewMessage();">ارسال</button>
+                    </div>
+
+                </div>
+            </section>
+
+        </div>
+
+
+    </div>
+
+
+}
+
+
+

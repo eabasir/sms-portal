@@ -1,0 +1,117 @@
+﻿
+@using SMSPortalWebPanel.ViewModels
+@model BaseViewModel
+@section TitleSection{
+    گزارش ها
+}
+@section ActiveReport{active}
+@section HeaderSection{
+    <link href="~/Content/datatables/dataTables.bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/plugins/datatables/jquery.dataTables.js"></script>
+    <script src="~/Scripts/plugins/datatables/dataTables.bootstrap.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+
+    <script src="~/Scripts/Report.js"></script>
+
+}
+@section ContentBody{
+    <div class="row">
+        <div class="col-md-4">
+            <section class="panel">
+                <header class="panel-heading">
+                    نوع گزارش
+                </header>
+                <div class="panel-body">
+                    <select id="RportTypeDRP" name="RportTypeDRP">
+                        <option value="0">نوع گزارش را انتخاب کنید</option>;
+                        <option value="1">مخاطب</option>; 
+                        <option value="2">سازمان</option>;
+                        <option value="3">کاربر</option>;
+                        <option value="4">پیام های ارسالی</option>;
+                        <option value="5">پیام های دریافتی</option>;
+                        
+                    </select>
+
+                    <button type="button" class="btn btn-success" style="float:left" onclick="srearch();">جستجو</button>
+                </div>
+
+
+            </section>
+
+        </div>
+        <div class="col-md-4">
+            <section class="panel">
+                <header class="panel-heading">
+                    عبارت جستجو
+                </header>
+                <div class="panel-body">
+
+                    <input type="text" class="form-control" id="txtSearch" placeholder="عبارت جستجو یا بخشی از آن را وارد نمایید" />
+
+                </div>
+
+
+            </section>
+
+        </div>
+        <div class="col-md-4">
+            <section class="panel">
+                <header class="panel-heading">
+                    زمانبندی
+                </header>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon" data-MdDateTimePicker="true" data-targetselector="#DTStart" data-trigger="click">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </div>
+                            <input type="text" class="form-control" id="DTStart" placeholder="تاریخ شروع" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon" data-MdDateTimePicker="true" data-targetselector="#DTFinish" data-trigger="click" >
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </div>
+                            <input type="text" class="form-control" id="DTFinish" placeholder="تاریخ پایان" />
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </section>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <section class="panel">
+                <header class="panel-heading">
+                    نتایج
+                </header>
+
+                <div class="panel-body table-responsive">
+                    <table id="myDataTable" class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>پیام</th>
+                                <th>ارسال/دریافت</th>
+                                <th>تاریخ</th>
+                                <th>سیم کارت</th>
+                                <th>فرستنده/گیرنده</th>
+                                <th>جزئیات</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+
+                </div>
+            </section>
+
+        </div>
+    </div>
+}
+

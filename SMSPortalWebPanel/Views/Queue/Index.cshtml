@@ -1,0 +1,97 @@
+﻿
+@using SMSPortalWebPanel.ViewModels
+@model BaseViewModel
+@section TitleSection{
+    صف ارسال
+}
+@section ActiveQueue{active}
+@section HeaderSection{
+    <link href="~/Content/datatables/dataTables.bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/plugins/datatables/jquery.dataTables.js"></script>
+    <script src="~/Scripts/plugins/datatables/dataTables.bootstrap.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+
+    <script src="~/Scripts/Queue.js" charset="utf-8"></script>
+
+}
+@section ContentBody{
+    <div class="row">
+
+        <div class="col-md-12">
+            <section class="panel" id="sectionQueues">
+                <header class="panel-heading">
+                    راه اندازی
+                </header>
+                <div class="panel-body">
+                    <button type="submit" class="btn btn-success" onclick="RestartQueues();">راه اندازی مجدد صف ارسال</button>
+                </div>
+            </section>
+
+        </div>
+        <div class="col-md-12">
+            <section class="panel" id="sectionQueues">
+                <header class="panel-heading">
+                    صف ارسال
+                </header>
+
+                <div class="panel-body">
+                    <button type="submit" class="btn btn-success" onclick="getQueues();">بروز رسانی صف ارسال</button>
+                </div>
+                <div class="panel-body table-responsive">
+                    <table id="QueueDT" class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>متن پیام</th>
+                                <th>تعداد باقیمانده</th>
+                                <th>کاربر</th>
+                                <th>زمان ساخت</th>
+                                <th>زمان ارسال</th>
+                                <th>حالت تکرار</th>
+                                <th>تغییر وضعییت</th>
+                                <th>حذف</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </section>
+
+        </div>
+
+
+        <div class="col-md-12">
+            <section class="panel" id="sectionQueueContacts" hidden>
+                <header class="panel-heading">
+                    مخاطب های در صف ارسال
+                </header>
+                
+                <div class="panel-body">
+                    <button type="submit" class="btn btn-success" onclick="showQueueContacts();">بروز رسانی مخاطبین در صف</button>
+                </div>
+
+
+                <div class="panel-body table-responsive">
+                    <table id="QueueContactsDT" class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>نام</th>
+                                <th>نام خانوادگی</th>
+                                <th>شماره تلفن</th>
+                                <th>حالت فعلی</th>
+                                <th>تغییر وضعیت</th>
+                                <th>حذف</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+
+}
+

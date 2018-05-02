@@ -1,0 +1,74 @@
+﻿
+@using SMSPortalWebPanel.ViewModels
+@model BaseViewModel
+@section TitleSection{
+    پیام های ارسال شده
+}
+@section ActiveSendBox{active}
+@section HeaderSection{
+    <link href="~/Content/datatables/dataTables.bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/plugins/datatables/jquery.dataTables.js"></script>
+    <script src="~/Scripts/plugins/datatables/dataTables.bootstrap.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+
+    <script src="~/Scripts/SendBox.js" charset="utf-8"></script>
+
+
+}
+@section ContentBody{
+   
+    <div class="row">
+        <div class="col-md-12">
+            <section class="panel" id="sectionSents">
+                <header class="panel-heading">
+                    پیام های ارسال شده
+                </header>
+                <div class="panel-body table-responsive">
+                    <table id="SentDT" class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>متن پیام</th>
+                                <th>تعداد ارسال شده</th>
+                                <th>کاربر</th>
+                                <th>زمان ساخت</th>
+                                <th>حالت تکرار</th>
+                                <th>کپی</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </section>
+
+        </div>
+
+        <div class="col-md-12">
+            <section class="panel"  id="sectionSentContacts" hidden>
+                <header class="panel-heading">
+                    مخاطب های پیام ارسال شده
+                </header>
+                <div class="panel-body table-responsive">
+                    <table id="SendBoxContactsDT" class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>نام</th>
+                                <th>نام خانوادگی</th>
+                                <th>شماره تلفن</th>
+                                <th>شماره سیم کارت</th>
+                                <th>تاریخ ارسال</th>
+                                <th>وضعیت دلیوری</th>
+                                <th>تاریخ دلیوری</th>
+                                <th>کپی</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </div>
+
+}
+

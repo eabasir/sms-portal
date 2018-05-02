@@ -1,0 +1,44 @@
+﻿
+@{Layout = null; }
+
+@using SMSPortalWebPanel.ViewModels
+@using CaptchaMvc.HtmlHelpers
+@model AuthenticationViewModel
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>ورود</title>
+
+    <link href="~/Content/login.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery.min.js"></script>
+
+
+</head>
+<body>
+    <div class="login">
+        <div class="login-triangle"></div>
+
+        <h2 class="login-header">خوش آمدید</h2>
+        <form class="login-container" action="/Authentication/DoLogin" method="post">
+            <p><input name="UserName" placeholder="UserName"></p>
+            <p>@Html.ValidationMessageFor(x => x.UserName)</p>
+            <p><input type="password" name="Password" placeholder="Password"></p>
+
+            
+            <p>@Html.Captcha("عبارت جدید", "",5 )</p>
+
+            <script>
+
+                $('#CaptchaInputText').attr('placeholder', 'عبارت امنیتی را وارد نمایید');
+            </script>
+
+            <p><input type="submit" value="ورود"></p>
+            <p>@Html.ValidationMessage("CredentialError", new { style = "color:red;" })</p>
+        </form>
+    </div>
+
+    
+</body>
+</html>
+

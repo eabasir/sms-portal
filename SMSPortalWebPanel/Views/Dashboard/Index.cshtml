@@ -1,0 +1,96 @@
+﻿
+@using SMSPortalWebPanel.ViewModels
+@model DashboardViewModel
+@section TitleSection{
+    داشبورد
+}
+@section ActiveDashboard{active}
+@section HeaderSection{
+
+
+    <script src="~/Scripts/plugins/Chart/utils.js"></script>
+    <script src="~/Scripts/plugins/Chart/Chart.js"></script>
+
+    <script src="~/Scripts/Dashboard/BarChart.js"></script>
+    <script src="~/Scripts/Dashboard/PieChart.js"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            makeBarChart();
+            makePieChart();
+        });
+
+
+
+    </script>
+    @* Bar Chart *@
+    <style>
+        canvas {
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+        }
+    </style>
+}
+@section ContentBody{
+    <div class="row">
+        <div class="col-md-8">
+            <section class="panel">
+                <header class="panel-heading">
+                    هفته گذشته
+                </header>
+                <div class="panel-body">
+
+                    <div id="container">
+                        <canvas id="bar-chart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <div class="col-md-4">
+            <section class="panel">
+                <header class="panel-heading">
+                    آمار کلی
+                </header>
+
+                <div class="panel-body">
+                    <div id="canvas-holder">
+                        <canvas id="pie-chart" />
+                    </div>
+                </div>
+
+
+            </section>
+
+        </div>
+
+        <div class="col-md-12" style="background:none!important ; margin-bottom:50px;">
+
+            @foreach (SimData item in Model.SIMDatas)
+            {
+                <div class="col-md-3">
+                    <div class="sm-st clearfix">
+                        <span class="sm-st-icon st-violet"><i class="fa fa-phone"></i></span>
+                        <div class="sm-st-info">
+                            شماره
+                            <span>@item.Number</span>
+                            پیام های فرستاده
+                            <span>@item.Sents</span>
+                            پیام های دریافت شده
+                            <span>@item.Recieveds</span>
+                           
+
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+
+
+}
+

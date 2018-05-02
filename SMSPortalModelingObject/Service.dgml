@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DirectedGraph xmlns="http://schemas.microsoft.com/vs/2009/dgml">
+  <Nodes>
+    <Node Id="(@1)" Category="CodeSchema_Solution" Bounds="599.501666666667,0,74.5266666666666,25.96" Label="SMSPortal" />
+    <Node Id="(@4 @2 @10 Member=lstAllSim)" Category="CodeSchema_Field" Bounds="519.646666666667,279.96,86.2366666666667,26" CodeSchemaProperty_IsPrivate="True" Icon="Microsoft.VisualStudio.Field.Private" Label="lstAllSim" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///C:/Users/Ehsan/Desktop/SMS Portal/Project/SMSPortal/SMSPortalService/GSMHandler.cs&quot; StartLineNumber=10 StartCharacterOffset=18 EndLineNumber=10 EndCharacterOffset=18)" />
+    <Node Id="(@4 @2 @10 Member=lstGsm)" Category="CodeSchema_Field" Bounds="699.4,279.96,76.73,26" CodeSchemaProperty_IsPrivate="True" Icon="Microsoft.VisualStudio.Field.Private" Label="lstGsm" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///C:/Users/Ehsan/Desktop/SMS Portal/Project/SMSPortal/SMSPortalService/GSMHandler.cs&quot; StartLineNumber=11 StartCharacterOffset=18 EndLineNumber=11 EndCharacterOffset=18)" />
+    <Node Id="(@4 @2 @8 Member=OnRecieve)" Category="CodeSchema_Method" Bounds="700.245,503.96,97.04,26" CodeSchemaProperty_IsPrivate="True" CommonLabel="OnRecieve" FunctionTypeFlags="Method" Icon="Microsoft.VisualStudio.Method.Private" Label="OnRecieve" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///c:/users/ehsan/desktop/sms portal/project/smsportal/smsportalservice/gsm.cs&quot; StartLineNumber=115 StartCharacterOffset=8 EndLineNumber=115 EndCharacterOffset=8)" />
+    <Node Id="(@4 @2 @8 Member=isWorking)" Category="CodeSchema_Field" Bounds="949.695,503.96,94.1400000000001,26" CodeSchemaProperty_IsPrivate="True" Icon="Microsoft.VisualStudio.Field.Private" Label="isWorking" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///c:/users/ehsan/desktop/sms portal/project/smsportal/smsportalservice/gsm.cs&quot; StartLineNumber=30 StartCharacterOffset=21 EndLineNumber=30 EndCharacterOffset=21)" />
+    <Node Id="(@4 @2 @8 Member=sim)" Category="CodeSchema_Field" Bounds="860.096666666667,503.96,59.3366666666667,26" CodeSchemaProperty_IsPublic="True" Icon="Microsoft.VisualStudio.Field.Public" Label="sim" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///c:/users/ehsan/desktop/sms portal/project/smsportal/smsportalservice/gsm.cs&quot; StartLineNumber=14 StartCharacterOffset=19 EndLineNumber=14 EndCharacterOffset=19)" />
+    <Node Id="@11" Category="CodeSchema_Class" Bounds="582.653333333334,223.96,108.223333333333,26" CodeSchemaProperty_IsPublic="True" CommonLabel="GSMHandler" Icon="Microsoft.VisualStudio.Class.Public" Label="GSMHandler" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///C:/Users/Ehsan/Desktop/SMS Portal/Project/SMSPortal/SMSPortalService/GSMHandler.cs&quot; StartLineNumber=8 StartCharacterOffset=4 EndLineNumber=8 EndCharacterOffset=4)" />
+    <Node Id="@13" Category="CodeSchema_Class" Bounds="48.3466666666668,111.96,102.836666666667,26" CodeSchemaProperty_IsPublic="True" CommonLabel="WebService" Icon="Microsoft.VisualStudio.Class.Public" Label="WebService" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///c:/users/ehsan/desktop/sms portal/project/smsportal/smsportalservice/webservice.asmx.cs&quot; StartLineNumber=12 StartCharacterOffset=4 EndLineNumber=12 EndCharacterOffset=4)" />
+    <Node Id="@14" Category="CodeSchema_Method" Bounds="1074.08,503.96,111.37,26" CodeSchemaProperty_IsPublic="True" CommonLabel="AddToQueue" FunctionTypeFlags="Method" Icon="Microsoft.VisualStudio.Method.Public" Label="AddToQueue" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///c:/users/ehsan/desktop/sms portal/project/smsportal/smsportalservice/gsm.cs&quot; StartLineNumber=38 StartCharacterOffset=8 EndLineNumber=38 EndCharacterOffset=8)" />
+    <Node Id="@15" Category="CodeSchema_Method" Bounds="634.093333333334,671.96,83.3433333333334,26" CodeSchemaProperty_IsPrivate="True" CommonLabel="OnSend" FunctionTypeFlags="Method" Icon="Microsoft.VisualStudio.Method.Private" Label="OnSend" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///c:/users/ehsan/desktop/sms portal/project/smsportal/smsportalservice/gsm.cs&quot; StartLineNumber=67 StartCharacterOffset=8 EndLineNumber=67 EndCharacterOffset=8)" />
+    <Node Id="@16" Category="CodeSchema_Method" Bounds="668.011666666667,615.96,67.5066666666667,26" CodeSchemaProperty_IsPrivate="True" CommonLabel="" FunctionTypeFlags="Method" Icon="Microsoft.VisualStudio.Method.Private" Label="Send" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///c:/users/ehsan/desktop/sms portal/project/smsportal/smsportalservice/gsm.cs&quot; StartLineNumber=61 StartCharacterOffset=8 EndLineNumber=61 EndCharacterOffset=8)" />
+    <Node Id="@19" Category="CodeSchema_Method" Bounds="159.541666666667,279.96,126.446666666667,26" CodeSchemaProperty_IsPrivate="True" CommonLabel="NumberHandler" FunctionTypeFlags="Method" Icon="Microsoft.VisualStudio.Method.Private" Label="NumberHandler" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///c:/users/ehsan/desktop/sms portal/project/smsportal/smsportalservice/webservice.asmx.cs&quot; StartLineNumber=246 StartCharacterOffset=8 EndLineNumber=246 EndCharacterOffset=8)" />
+    <Node Id="@22" Category="CodeSchema_Method" Bounds="507.573333333333,503.96,66.3833333333333,26" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CommonLabel="GSM" FunctionTypeFlags="Constructor" Icon="Microsoft.VisualStudio.Method.Public" Label="GSM" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///c:/users/ehsan/desktop/sms portal/project/smsportal/smsportalservice/gsm.cs&quot; StartLineNumber=32 StartCharacterOffset=8 EndLineNumber=32 EndCharacterOffset=8)" />
+    <Node Id="@24" Category="CodeSchema_Method" Bounds="667.511666666667,391.96,102.506666666667,26" CodeSchemaProperty_IsPrivate="True" CommonLabel="GetFreeSIM" FunctionTypeFlags="Method" Icon="Microsoft.VisualStudio.Method.Private" Label="GetFreeSIM" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///C:/Users/Ehsan/Desktop/SMS Portal/Project/SMSPortal/SMSPortalService/GSMHandler.cs&quot; StartLineNumber=31 StartCharacterOffset=8 EndLineNumber=31 EndCharacterOffset=8)" />
+    <Node Id="@28" Category="CodeSchema_Method" Bounds="0,279.96,129.53,26" CodeSchemaProperty_IsPrivate="True" CommonLabel="MessageHandler" FunctionTypeFlags="Method" Icon="Microsoft.VisualStudio.Method.Private" Label="MessageHandler" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///c:/users/ehsan/desktop/sms portal/project/smsportal/smsportalservice/webservice.asmx.cs&quot; StartLineNumber=203 StartCharacterOffset=8 EndLineNumber=203 EndCharacterOffset=8)" />
+    <Node Id="@29" Category="CodeSchema_Method" Bounds="434.648333333334,335.96,108.233333333333,26" CodeSchemaProperty_IsPublic="True" CommonLabel="PushHandler" FunctionTypeFlags="Method" Icon="Microsoft.VisualStudio.Method.Public" Label="PushHandler" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///C:/Users/Ehsan/Desktop/SMS Portal/Project/SMSPortal/SMSPortalService/GSMHandler.cs&quot; StartLineNumber=84 StartCharacterOffset=8 EndLineNumber=84 EndCharacterOffset=8)" />
+    <Node Id="@3" Category="CodeSchema_Namespace" Bounds="570.353333333334,55.96,132.823333333333,26" Icon="Microsoft.VisualStudio.Namespace.Public" Label="SMSPortalService" />
+    <Node Id="@30" Category="CodeSchema_Method" Bounds="348.026666666667,279.96,109.476666666667,26" CodeSchemaProperty_IsPublic="True" CommonLabel="QueueMaker" FunctionTypeFlags="Method" Icon="Microsoft.VisualStudio.Method.Public" Label="QueueMaker" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///C:/Users/Ehsan/Desktop/SMS Portal/Project/SMSPortal/SMSPortalService/GSMHandler.cs&quot; StartLineNumber=50 StartCharacterOffset=8 EndLineNumber=50 EndCharacterOffset=8)" />
+    <Node Id="@31" Category="CodeSchema_Method" Bounds="174.135,223.96,111.26,26" CodeSchemaProperty_IsPrivate="True" CommonLabel="" FunctionTypeFlags="Method" Icon="Microsoft.VisualStudio.Method.Private" Label="StartProccess" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///c:/users/ehsan/desktop/sms portal/project/smsportal/smsportalservice/webservice.asmx.cs&quot; StartLineNumber=48 StartCharacterOffset=8 EndLineNumber=48 EndCharacterOffset=8)" />
+    <Node Id="@32" Category="CodeSchema_Method" Bounds="131.011666666667,167.96,67.5066666666667,26" CodeSchemaProperty_IsPublic="True" CommonLabel="Send" FunctionTypeFlags="Method" Icon="Microsoft.VisualStudio.Method.Public" Label="Send" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///c:/users/ehsan/desktop/sms portal/project/smsportal/smsportalservice/webservice.asmx.cs&quot; StartLineNumber=19 StartCharacterOffset=8 EndLineNumber=19 EndCharacterOffset=8)" />
+    <Node Id="@33" Category="CodeSchema_Method" Bounds="576.653333333334,447.96,108.223333333333,26" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CommonLabel="" FunctionTypeFlags="Constructor" Icon="Microsoft.VisualStudio.Method.Public" Label="GSMHandler" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///C:/Users/Ehsan/Desktop/SMS Portal/Project/SMSPortal/SMSPortalService/GSMHandler.cs&quot; StartLineNumber=13 StartCharacterOffset=8 EndLineNumber=13 EndCharacterOffset=8)" />
+    <Node Id="@34" Category="CodeSchema_Method" Bounds="774.673333333334,559.96,108.183333333333,26" CodeSchemaProperty_IsPrivate="True" CommonLabel="" FunctionTypeFlags="Method" Icon="Microsoft.VisualStudio.Method.Private" Label="CheckQueue" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///c:/users/ehsan/desktop/sms portal/project/smsportal/smsportalservice/gsm.cs&quot; StartLineNumber=48 StartCharacterOffset=8 EndLineNumber=48 EndCharacterOffset=8)" />
+    <Node Id="@35" Category="CodeSchema_Field" Bounds="668.096666666667,167.96,105.336666666667,26" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsStatic="True" Icon="Microsoft.VisualStudio.Field.Public" Label="gsmHandler" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///C:/Users/Ehsan/Desktop/SMS Portal/Project/SMSPortal/SMSPortalService/Global.asax.cs&quot; StartLineNumber=12 StartCharacterOffset=33 EndLineNumber=12 EndCharacterOffset=33)" />
+    <Node Id="@36" Category="CodeSchema_Property" Bounds="205.3,727.96,102.93,26" CodeSchemaProperty_IsPublic="True" FunctionTypeFlags="Property Assignment" Icon="Microsoft.VisualStudio.Property.Public" Label="Message_Id" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///c:/users/ehsan/desktop/sms portal/project/smsportal/smsportalservice/gsm.cs&quot; StartLineNumber=20 StartCharacterOffset=12 EndLineNumber=20 EndCharacterOffset=12)" />
+    <Node Id="@37" Category="CodeSchema_Property" Bounds="338.461666666667,727.96,84.6066666666667,26" CodeSchemaProperty_IsPublic="True" FunctionTypeFlags="Property Assignment" Icon="Microsoft.VisualStudio.Property.Public" Label="Number" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///c:/users/ehsan/desktop/sms portal/project/smsportal/smsportalservice/gsm.cs&quot; StartLineNumber=18 StartCharacterOffset=12 EndLineNumber=18 EndCharacterOffset=12)" />
+    <Node Id="@38" Category="CodeSchema_Property" Bounds="453.841666666667,727.96,89.8466666666666,26" CodeSchemaProperty_IsPublic="True" FunctionTypeFlags="Property Assignment" Icon="Microsoft.VisualStudio.Property.Public" Label="Phone_Id" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///c:/users/ehsan/desktop/sms portal/project/smsportal/smsportalservice/gsm.cs&quot; StartLineNumber=21 StartCharacterOffset=12 EndLineNumber=21 EndCharacterOffset=12)" />
+    <Node Id="@39" Category="CodeSchema_Property" Bounds="1094.76166666667,727.96,72.0066666666667,26" CodeSchemaProperty_IsPublic="True" FunctionTypeFlags="Property Assignment" Icon="Microsoft.VisualStudio.Property.Public" Label="QP_Id" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///c:/users/ehsan/desktop/sms portal/project/smsportal/smsportalservice/gsm.cs&quot; StartLineNumber=23 StartCharacterOffset=12 EndLineNumber=23 EndCharacterOffset=12)" />
+    <Node Id="@40" Category="CodeSchema_Property" Bounds="574.055,727.96,91.42,26" CodeSchemaProperty_IsPublic="True" FunctionTypeFlags="Property Assignment" Icon="Microsoft.VisualStudio.Property.Public" Label="Queue_Id" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///c:/users/ehsan/desktop/sms portal/project/smsportal/smsportalservice/gsm.cs&quot; StartLineNumber=22 StartCharacterOffset=12 EndLineNumber=22 EndCharacterOffset=12)" />
+    <Node Id="@41" Category="CodeSchema_Property" Bounds="1197.68333333333,727.96,102.163333333333,26" CodeSchemaProperty_IsPublic="True" FunctionTypeFlags="Property Assignment" Icon="Microsoft.VisualStudio.Property.Public" Label="SendBox_Id" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///c:/users/ehsan/desktop/sms portal/project/smsportal/smsportalservice/gsm.cs&quot; StartLineNumber=24 StartCharacterOffset=12 EndLineNumber=24 EndCharacterOffset=12)" />
+    <Node Id="@6" Category="CodeSchema_Class" Bounds="443.746666666667,671.96,128.036666666667,26" CodeSchemaProperty_IsPublic="True" CommonLabel="QueueItem" Icon="Microsoft.VisualStudio.Class.Public" Label="GSM‎.QueueItem" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///c:/users/ehsan/desktop/sms portal/project/smsportal/smsportalservice/gsm.cs&quot; StartLineNumber=15 StartCharacterOffset=8 EndLineNumber=15 EndCharacterOffset=8)" />
+    <Node Id="@7" Category="CodeSchema_Class" Bounds="683.146666666667,111.96,75.2366666666667,26" CodeSchemaProperty_IsPublic="True" CommonLabel="Global" Icon="Microsoft.VisualStudio.Class.Public" Label="Global" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///C:/Users/Ehsan/Desktop/SMS Portal/Project/SMSPortal/SMSPortalService/Global.asax.cs&quot; StartLineNumber=10 StartCharacterOffset=4 EndLineNumber=10 EndCharacterOffset=4)" />
+    <Node Id="@9" Category="CodeSchema_Class" Bounds="715.573333333333,447.96,66.3833333333333,26" CodeSchemaProperty_IsPublic="True" CommonLabel="GSM" Icon="Microsoft.VisualStudio.Class.Public" Label="GSM" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" SourceLocation="(Assembly=&quot;file:///c:/users/ehsan/desktop/sms portal/project/smsportal/smsportalservice/gsm.cs&quot; StartLineNumber=11 StartCharacterOffset=4 EndLineNumber=11 EndCharacterOffset=4)" />
+  </Nodes>
+  <Links>
+    <Link Source="(@1)" Target="@3" Category="Contains" Bounds="636.765014648438,25.9599990844727,0,21" />
+    <Link Source="@11" Target="(@4 @2 @10 Member=lstAllSim)" Category="Contains" Bounds="587.120239257813,249.960006713867,32.4661865234375,24.5690155029297" />
+    <Link Source="@11" Target="(@4 @2 @10 Member=lstGsm)" Category="Contains" Bounds="660.21142578125,249.960006713867,46.236083984375,25.6358184814453" />
+    <Link Source="@11" Target="@24" Category="Contains" Bounds="644.193542480469,249.960006713867,65.0989990234375,133.781753540039" />
+    <Link Source="@11" Target="@29" Category="Contains" Bounds="488.765014648438,249.960006713867,109.37939453125,76.9999847412109" />
+    <Link Source="@11" Target="@30" Category="Contains" Bounds="464.571044921875,249.552947998047,119.573425292969,28.6158447265625" />
+    <Link Source="@11" Target="@33" Category="Contains" Bounds="633.116638183594,249.960006713867,3.64837646484375,189.051223754883" />
+    <Link Source="@13" Target="@19" Category="Contains" Bounds="99.7649993896484,137.960006713867,86.2554168701172,138.270736694336" />
+    <Link Source="@13" Target="@28" Category="Contains" Bounds="65.3542022705078,137.960006713867,26.9822235107422,133.003219604492" />
+    <Link Source="@13" Target="@31" Category="Contains" Bounds="130.990966796875,137.960006713867,98.7740325927734,77" />
+    <Link Source="@13" Target="@32" Category="Contains" Bounds="114.854286193848,137.960006713867,28.0029525756836,24.1256103515625" />
+    <Link Source="@14" Target="@34" Category="CodeSchema_Calls" Bounds="891.704162597656,527.316040039063,182.397033691406,33.934326171875" />
+    <Link Source="@15" Target="@38" Category="CodeSchema_Calls" Bounds="548.43505859375,697.628662109375,87.287841796875,27.6165161132813" />
+    <Link Source="@15" Target="@39" Category="CodeSchema_Calls" Bounds="717.436645507813,690.088806152344,368.392456054688,45.3406372070313" />
+    <Link Source="@15" Target="@40" Category="CodeSchema_Calls" Bounds="639.128967285156,697.960021972656,23.6360473632813,23.6360473632813" />
+    <Link Source="@15" Target="@41" Category="CodeSchema_Calls" Bounds="717.436645507813,688.01171875,472.131225585938,39.4896240234375" />
+    <Link Source="@16" Target="@15" Category="CodeSchema_Calls" Bounds="685.590698242188,641.960021972656,10.1386108398438,21.8369140625" />
+    <Link Source="@24" Target="@9" Category="CodeSchema_ReturnTypeLink" Bounds="725.729309082031,417.959991455078,11.8214111328125,22.0666809082031">
+      <Category Ref="References" />
+    </Link>
+    <Link Source="@29" Target="@14" Category="CodeSchema_Calls" Bounds="542.881652832031,353.771392822266,586.883361816406,141.188598632813" />
+    <Link Source="@29" Target="@24" Category="CodeSchema_Calls" Bounds="541.098571777344,361.702087402344,118.668151855469,28.8931274414063" />
+    <Link Source="@29" Target="@36" Category="CodeSchema_Calls" Bounds="264.352386474609,361.959991455078,191.303070068359,357.513580322266" />
+    <Link Source="@29" Target="@37" Category="CodeSchema_Calls" Bounds="380.765014648438,361.959991455078,82.9285583496094,357.000030517578" />
+    <Link Source="@29" Target="@38" Category="CodeSchema_Calls" Bounds="412.765014648438,361.959991455078,58.4937133789063,361.088958740234" />
+    <Link Source="@29" Target="@39" Category="CodeSchema_Calls" Bounds="542.881652832031,354.337432861328,655.157043457031,365.019256591797" />
+    <Link Source="@29" Target="@40" Category="CodeSchema_Calls" Bounds="482.300506591797,361.959991455078,124.322540283203,358.414031982422" />
+    <Link Source="@29" Target="@41" Category="CodeSchema_Calls" Bounds="542.881652832031,354.513336181641,705.883361816406,364.446685791016" />
+    <Link Source="@3" Target="@11" Category="Contains" Bounds="636.765014648438,81.9599990844727,0,133.000007629395" />
+    <Link Source="@3" Target="@13" Category="Contains" Bounds="160.134796142578,75.885612487793,410.218536376953,42.7788391113281" />
+    <Link Source="@3" Target="@6" Category="Contains" Bounds="316.765014648438,80.5068664550781,254.017883300781,584.018218994141" />
+    <Link Source="@3" Target="@7" Category="Contains" Bounds="656.265014648438,81.9599990844727,37.5115356445313,25.007698059082" />
+    <Link Source="@3" Target="@9" Category="Contains" Bounds="703.176696777344,74.7349243164063,577.588317871094,381.7890625" />
+    <Link Source="@30" Target="@29" Category="CodeSchema_Calls" Bounds="422.729278564453,305.959991455078,38.5294494628906,25.0889587402344" />
+    <Link Source="@31" Target="@19" Category="CodeSchema_Calls" Bounds="225.506317138672,249.960006713867,2.63368225097656,21.0695037841797" />
+    <Link Source="@31" Target="@28" Category="CodeSchema_Calls" Bounds="111.591102600098,249.960006713867,79.8703231811523,27.1074981689453" />
+    <Link Source="@31" Target="@30" Category="CodeSchema_Calls" Bounds="269.925720214844,249.960006713867,84.1159973144531,27.2282867431641" />
+    <Link Source="@32" Target="@31" Category="CodeSchema_Calls" Bounds="179.854278564453,193.960006713867,28.0029602050781,24.1256103515625" />
+    <Link Source="@33" Target="@22" Category="CodeSchema_Calls" Bounds="569.299377441406,473.959991455078,40.57275390625,25.2453002929688" />
+    <Link Source="@34" Target="@16" Category="CodeSchema_Calls" Bounds="739.482116699219,585.960021972656,59.8007202148438,26.3688354492188" />
+    <Link Source="@35" Target="@11" Category="References" Bounds="663.753479003906,193.960006713867,37.5115356445313,25.0076904296875" />
+    <Link Source="@6" Target="@36" Category="Contains" Bounds="316.6650390625,697.960021972656,132.832092285156,29.6358032226563" />
+    <Link Source="@6" Target="@37" Category="Contains" Bounds="418.482116699219,697.960021972656,59.8007507324219,26.3688354492188" />
+    <Link Source="@6" Target="@38" Category="Contains" Bounds="502.282379150391,697.960021972656,3.39334106445313,21.114013671875" />
+    <Link Source="@6" Target="@39" Category="Contains" Bounds="571.493286132813,696.246887207031,514.292114257813,41.4363403320313" />
+    <Link Source="@6" Target="@40" Category="Contains" Bounds="533.765014648438,697.960021972656,51.9501342773438,25.9750366210938" />
+    <Link Source="@6" Target="@41" Category="Contains" Bounds="571.156494140625,696.795227050781,622.585815429688,29.5975341796875" />
+    <Link Source="@7" Target="@35" Category="Contains" Bounds="720.765014648438,137.960006713867,0,21" />
+    <Link Source="@9" Target="(@4 @2 @8 Member=OnRecieve)" Category="Contains" Bounds="748.765014648438,473.959991455078,0,21" />
+    <Link Source="@9" Target="(@4 @2 @8 Member=isWorking)" Category="Contains" Bounds="781.956665039063,468.454895019531,159.02294921875,35.9084167480469" />
+    <Link Source="@9" Target="(@4 @2 @8 Member=sim)" Category="Contains" Bounds="780.46826171875,473.551361083984,71.7260131835938,28.4869384765625" />
+    <Link Source="@9" Target="@14" Category="Contains" Bounds="781.956665039063,465.517364501953,283.240112304688,40.0551452636719" />
+    <Link Source="@9" Target="@15" Category="Contains" Bounds="636.765014648438,473.959991455078,86,190.614532470703" />
+    <Link Source="@9" Target="@16" Category="Contains" Bounds="668.765014648438,473.959991455078,61.4285278320313,134.246185302734" />
+    <Link Source="@9" Target="@22" Category="Contains" Bounds="582.647216796875,469.896209716797,132.926086425781,35.7878112792969" />
+    <Link Source="@9" Target="@34" Category="Contains" Bounds="767.33642578125,473.959991455078,61.4285888671875,77.0000305175781" />
+    <Link Source="@9" Target="@6" Category="Contains" Bounds="522.1337890625,473.092193603516,194.329162597656,191.515533447266" />
+  </Links>
+  <Categories>
+    <Category Id="CodeSchema_Calls" Label="Calls" CanBeDataDriven="True" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Called By" OutgoingActionLabel="Calls" />
+    <Category Id="CodeSchema_Class" Label="Class" BasedOn="CodeSchema_Type" CanBeDataDriven="True" DefaultAction="Node:Both:CodeSchema_Member" Icon="CodeSchema_Class" NavigationActionLabel="Classes" />
+    <Category Id="CodeSchema_Field" Label="Field" BasedOn="CodeSchema_Member" CanBeDataDriven="True" DefaultAction="Microsoft.Contains" Icon="CodeSchema_Field" NavigationActionLabel="Fields" />
+    <Category Id="CodeSchema_Member" Label="Member" CanBeDataDriven="True" DefaultAction="Microsoft.Contains" Icon="CodeSchema_Field" NavigationActionLabel="Members" />
+    <Category Id="CodeSchema_Method" Label="Method" BasedOn="CodeSchema_Member" CanBeDataDriven="True" DefaultAction="Link:Forward:CodeSchema_Calls" Icon="CodeSchema_Method" NavigationActionLabel="Methods" />
+    <Category Id="CodeSchema_Namespace" Label="Namespace" CanBeDataDriven="True" DefaultAction="Node:Both:CodeSchema_Type" Icon="CodeSchema_Namespace" NavigationActionLabel="Namespaces" />
+    <Category Id="CodeSchema_Property" Label="Property" BasedOn="CodeSchema_Member" CanBeDataDriven="True" DefaultAction="Microsoft.Contains" Icon="CodeSchema_Property" NavigationActionLabel="Properties" />
+    <Category Id="CodeSchema_ReturnTypeLink" Label="Return" CanBeDataDriven="True" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Return types" OutgoingActionLabel="Return types" />
+    <Category Id="CodeSchema_Solution" Label="Solution" CanBeDataDriven="True" DefaultAction="Microsoft.Contains" NavigationActionLabel="Solutions" />
+    <Category Id="CodeSchema_Type" Label="Type" CanBeDataDriven="True" DefaultAction="Node:Both:CodeSchema_Member" Icon="CodeSchema_Class" NavigationActionLabel="Types" />
+    <Category Id="Contains" Label="Contains" Description="Whether the source of the link contains the target object" CanBeDataDriven="False" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Contained By" IsContainment="True" OutgoingActionLabel="Contains" />
+    <Category Id="References" Label="References" CanBeDataDriven="True" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Referenced By" OutgoingActionLabel="References" />
+  </Categories>
+  <Properties>
+    <Property Id="Bounds" DataType="System.Windows.Rect" />
+    <Property Id="CanBeDataDriven" Label="CanBeDataDriven" Description="CanBeDataDriven" DataType="System.Boolean" />
+    <Property Id="CanLinkedNodesBeDataDriven" Label="CanLinkedNodesBeDataDriven" Description="CanLinkedNodesBeDataDriven" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsConstructor" Label="Is Constructor" Description="Flag to indicate the method is a constructor" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsPrivate" Label="Is Private" Description="Flag to indicate the scope is Private" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsPublic" Label="Is Public" Description="Flag to indicate the scope is Public" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsStatic" Label="Is Static" Description="Flag to indicate the member is a static member" DataType="System.Boolean" />
+    <Property Id="CommonLabel" DataType="System.String" />
+    <Property Id="DefaultAction" Label="DefaultAction" Description="DefaultAction" DataType="System.String" />
+    <Property Id="FunctionTypeFlags" Label="FunctionTypeFlags" Description="FunctionTypeFlags" DataType="System.String" />
+    <Property Id="Icon" Label="Icon" Description="Icon" DataType="System.String" />
+    <Property Id="IncomingActionLabel" Label="IncomingActionLabel" Description="IncomingActionLabel" DataType="System.String" />
+    <Property Id="IsContainment" DataType="System.Boolean" />
+    <Property Id="Label" Label="Label" Description="Displayable label of an Annotatable object" DataType="System.String" />
+    <Property Id="Language" Label="Language" Description="Language" DataType="System.String" />
+    <Property Id="NavigationActionLabel" Label="NavigationActionLabel" Description="NavigationActionLabel" DataType="System.String" />
+    <Property Id="OutgoingActionLabel" Label="OutgoingActionLabel" Description="OutgoingActionLabel" DataType="System.String" />
+    <Property Id="SourceLocation" Label="Start Line Number" DataType="Microsoft.VisualStudio.GraphModel.CodeSchema.SourceLocation" />
+  </Properties>
+  <QualifiedNames>
+    <Name Id="Assembly" Label="Assembly" ValueType="Uri" />
+    <Name Id="GenericArguments" Label="Generic Arguments" ValueType="Microsoft.VisualStudio.GraphModel.GraphNodeIdCollection" />
+    <Name Id="GenericParameterCount" Label="Generic Parameter Count" ValueType="System.String" />
+    <Name Id="Member" Label="Member" ValueType="System.Object" />
+    <Name Id="Name" Label="Name" ValueType="System.String" />
+    <Name Id="Namespace" Label="Namespace" ValueType="System.String" />
+    <Name Id="OverloadingParameters" Label="Parameter" ValueType="Microsoft.VisualStudio.GraphModel.GraphNodeIdCollection" Formatter="NameValueNoEscape" />
+    <Name Id="ParentType" Label="Parent Type" ValueType="System.Object" />
+    <Name Id="Type" Label="Type" ValueType="System.Object" />
+  </QualifiedNames>
+  <IdentifierAliases>
+    <Alias n="1" Uri="Assembly=$(VsSolutionUri)/SMSPortal.sln" />
+    <Alias n="2" Id="Namespace=SMSPortalService" />
+    <Alias n="3" Id="(@2)" />
+    <Alias n="4" Uri="Assembly=$(7871f310-b187-4e4c-9002-0702b651fb71.OutputPathUri)" />
+    <Alias n="5" Id="Type=(Name=QueueItem ParentType=GSM)" />
+    <Alias n="6" Id="(@4 @2 @5)" />
+    <Alias n="7" Id="(@4 @2 Type=Global)" />
+    <Alias n="8" Id="Type=GSM" />
+    <Alias n="9" Id="(@4 @2 @8)" />
+    <Alias n="10" Id="Type=GSMHandler" />
+    <Alias n="11" Id="(@4 @2 @10)" />
+    <Alias n="12" Id="Type=WebService" />
+    <Alias n="13" Id="(@4 @2 @12)" />
+    <Alias n="14" Id="(@4 @2 @8 Member=(Name=AddToQueue OverloadingParameters=[@6]))" />
+    <Alias n="15" Id="(@4 @2 @8 Member=(Name=OnSend OverloadingParameters=[@6]))" />
+    <Alias n="16" Id="(@4 @2 @8 Member=(Name=Send OverloadingParameters=[@6]))" />
+    <Alias n="17" Uri="Assembly=$(FxReferenceAssembliesUri)/.NETFramework/v4.5/mscorlib.dll" />
+    <Alias n="18" Id="(@17 Namespace=System Type=String)" />
+    <Alias n="19" Id="(@4 @2 @12 Member=(Name=NumberHandler OverloadingParameters=[(@17 Namespace=System.Collections.Generic Type=(Name=List GenericParameterCount=1 GenericArguments=[@18]))]))" />
+    <Alias n="20" Uri="Assembly=$(63987b2d-36b3-4a68-9952-5781fb22d85c.OutputPathUri)" />
+    <Alias n="21" Id="Namespace=SMSPortalDBDataLibrary" />
+    <Alias n="22" Id="(@4 @2 @8 Member=(Name=.ctor OverloadingParameters=[(@20 @21 Type=SIM)]))" />
+    <Alias n="23" Id="(@20 @21 Type=User)" />
+    <Alias n="24" Id="(@4 @2 @10 Member=(Name=GetFreeSIM OverloadingParameters=[@23]))" />
+    <Alias n="25" Uri="Assembly=$(cd6e2ff6-d31f-4e4a-8edd-389dc2ac6d1f.OutputPathUri)" />
+    <Alias n="26" Id="(@25 Namespace=SMSPortalCross Type=(Name=Schedule ParentType=Enums))" />
+    <Alias n="27" Id="(@17 Namespace=System Type=DateTime)" />
+    <Alias n="28" Id="(@4 @2 @12 Member=(Name=MessageHandler OverloadingParameters=[@18,@26,@27]))" />
+    <Alias n="29" Id="(@4 @2 @10 Member=(Name=PushHandler OverloadingParameters=[@23,(@20 @21 Type=Queue),(@20 @21 Type=SendBox),(@17 Namespace=System.Collections.Generic Type=(Name=List GenericParameterCount=1 GenericArguments=[(@20 @21 Type=Phone)])),@26]))" />
+    <Alias n="30" Id="(@4 @2 @10 Member=(Name=QueueMaker OverloadingParameters=[@23,(@20 @21 Type=Message),(@17 Namespace=System.Collections.Generic Type=(Name=List GenericParameterCount=1 GenericArguments=[(@20 @21 Type=Phone)])),@26,@27]))" />
+    <Alias n="31" Id="(@4 @2 @12 Member=(Name=StartProccess OverloadingParameters=[@23,@18,(@17 Namespace=System.Collections.Generic Type=(Name=List GenericParameterCount=1 GenericArguments=[@18])),@26,@27]))" />
+    <Alias n="32" Id="(@4 @2 @12 Member=(Name=Send OverloadingParameters=[@18,@18,@18,(@17 Namespace=System.Collections.Generic Type=(Name=List GenericParameterCount=1 GenericArguments=[@18])),@26,@27]))" />
+    <Alias n="33" Id="(@4 @2 @10 Member=.ctor)" />
+    <Alias n="34" Id="(@4 @2 @8 Member=CheckQueue)" />
+    <Alias n="35" Id="(@4 @2 Type=Global Member=gsmHandler)" />
+    <Alias n="36" Id="(@4 @2 @5 Member=Message_Id)" />
+    <Alias n="37" Id="(@4 @2 @5 Member=Number)" />
+    <Alias n="38" Id="(@4 @2 @5 Member=Phone_Id)" />
+    <Alias n="39" Id="(@4 @2 @5 Member=QP_Id)" />
+    <Alias n="40" Id="(@4 @2 @5 Member=Queue_Id)" />
+    <Alias n="41" Id="(@4 @2 @5 Member=SendBox_Id)" />
+  </IdentifierAliases>
+  <Paths>
+    <Path Id="63987b2d-36b3-4a68-9952-5781fb22d85c.OutputPathUri" Value="file:///C:/Users/Ehsan/Desktop/SMS Portal/Project/SMSPortal/SMSPortalDBDataLibrary/bin/Debug/SMSPortalDBDataLibrary.dll" />
+    <Path Id="7871f310-b187-4e4c-9002-0702b651fb71.OutputPathUri" Value="file:///C:/Users/Ehsan/Desktop/SMS Portal/Project/SMSPortal/SMSPortalService/bin/SMSPortalService.dll" />
+    <Path Id="cd6e2ff6-d31f-4e4a-8edd-389dc2ac6d1f.OutputPathUri" Value="file:///C:/Users/Ehsan/Desktop/SMS Portal/Project/SMSPortal/SMSPortalCross/bin/Debug/SMSPortalCross.dll" />
+    <Path Id="FxReferenceAssembliesUri" Value="file:///C:/Program Files (x86)/Reference Assemblies/Microsoft/Framework" />
+    <Path Id="VsSolutionUri" Value="file:///C:/Users/Ehsan/Desktop/SMS Portal/Project/SMSPortal" />
+  </Paths>
+</DirectedGraph>

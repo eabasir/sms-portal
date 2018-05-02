@@ -1,0 +1,105 @@
+﻿
+@using SMSPortalWebPanel.ViewModels
+@model ContactAddUpdateViewModel
+@section TitleSection{
+    مدیریت مخاطب ها
+}
+@section ActiveContact{active}
+@section HeaderSection{
+
+    <link href="~/Content/datatables/dataTables.bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/plugins/datatables/jquery.dataTables.js"></script>
+    <script src="~/Scripts/plugins/datatables/dataTables.bootstrap.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+
+    <script src="~/Scripts/GroupAdd.js"></script>
+
+    <script language="javascript" type="text/javascript">
+
+        function goBack() {
+            var url = '@Url.Action("Index", "Contact")';
+            window.location.href = url;
+            return false;
+        }
+
+    </script>
+
+}
+@section ContentBody{
+    <div class="row">
+
+        <div class="col-lg-8">
+            <section class="panel">
+                <header class="panel-heading">
+                    اضافه کردن گروهی مخاطب
+                </header>
+
+                <div class="panel-body table-responsive">
+                    <div class="form-group">
+                        <div id="fileContainer" class="form-group">
+                            <button type="submit" class="btn btn-success">
+                                <label for="importFile" style="cursor:pointer">انتخاب فایل</label>
+                            </button>
+                            <input type="file" id="importFile" style="visibility:hidden;" accept=".xls, .xlsx , .vcf">
+                        </div>
+                    </div>
+
+                    <table id="myDataTable" class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>نام</th>
+                                <th>نام خانوادگی</th>
+                                <th>ایمیل</th>
+                                <th>شماره تماس ها</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+
+                </div>
+                <div class="panel-body">
+
+                    <button id="btnSubmit" type="button" class="btn btn-info" onclick="SaveContacts();">ثبت</button>
+
+                    <button type="button" class="btn btn-danger" onclick="return goBack();"> بازگشت </button>
+                </div>
+            </section>
+
+
+
+        </div>
+        <div class="col-lg-4">
+            <section class="panel">
+                <header class="panel-heading">
+                    اطلاعات سازمانی
+                </header>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label for="companyDRP">سازمان:</label>
+
+                        <select id="companyDRP" name="companyDRP">
+                            <option value="0">سازمان مورد نظر خود را انتخاب کنید</option>;
+                            @foreach (SelectListItem item in Model.CompanyList)
+                            {
+                                <option value="@item.Value">@item.Text</option>;
+                            }
+                        </select>
+                        <button type="button" class="btn btn-primary btn-addon btn-sm" onclick="addCompany();"><i class="fa fa-plus"></i></button>
+
+                    </div>
+                    <div class="form-group" id="companyContainer">
+
+                    </div>
+
+                </div>
+            </section>
+        </div>
+    </div>
+
+
+
+}
+
+
+

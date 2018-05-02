@@ -1,0 +1,125 @@
+﻿
+@using SMSPortalWebPanel.ViewModels
+@model SIMListViewModel
+@section TitleSection{
+    مدیریت سیم کارت
+}
+<<<<<<< HEAD
+=======
+@section ActiveGSM{active}
+>>>>>>> c512f9477fc46f8d77f350d9e1405d63131b9f74
+
+@section HeaderSection{
+
+    <link href="~/Content/datatables/dataTables.bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/plugins/datatables/jquery.dataTables.js"></script>
+    <script src="~/Scripts/plugins/datatables/dataTables.bootstrap.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+
+    <script language="javascript" type="text/javascript">
+<<<<<<< HEAD
+       
+=======
+
+>>>>>>> c512f9477fc46f8d77f350d9e1405d63131b9f74
+        $(document).ready(function () {
+            $('#myDataTable').dataTable();
+        });
+
+        $(document).on('confirmation', '.remodal', function () {
+            var url = '@Url.Action("Delete", "SIM" )';
+            window.location.href = url + "/" + IdToDelete;
+<<<<<<< HEAD
+       
+=======
+
+>>>>>>> c512f9477fc46f8d77f350d9e1405d63131b9f74
+        });
+
+        var IdToDelete;
+
+        function setIdToDelete(id) {
+            IdToDelete = id;
+
+        }
+
+    </script>
+
+}
+@section ContentBody{
+    <div class="row">
+
+        <div class="col-md-8">
+            <section class="panel">
+                <header class="panel-heading">
+                    سیم کارت ها
+                </header>
+                <div class="panel-body table-responsive">
+
+                    <table id="myDataTable" class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>شماره تلفن</th>
+                                <th>شارژ باقیمانده</th>
+                                <th>پورت اتصالی</th>
+                                <th>ویرایش</th>
+                                <th>حذف</th>
+                                <th>ارسال USSD</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (SIMViewModel item in Model.SIMVMs)
+                            {
+                                <tr>
+
+                                    <td>@item.Number</td>
+                                    <td>@item.Charge</td>
+                                    <td>@item.Port</td>
+<<<<<<< HEAD
+                                    <td><a href="~/SIM/AddUpdateSim/@item.Id"><button class="btn btn-default btn-xs"><i class="fa fa-pencil"></i></button></a></td>
+                                    <td><a data-remodal-target="defultYesNoModal" href="#" ><button class="btn btn-default btn-xs" onclick="setIdToDelete('@item.Id');"><i class="fa fa-times"></i></button></a></td>
+=======
+                                    <td><a href="~/SIM/AddUpdate/@item.Id"><button class="btn btn-default btn-xs"><i class="fa fa-pencil"></i></button></a></td>
+                                    <td><a data-remodal-target="defultYesNoModal" href="#"><button class="btn btn-default btn-xs" onclick="setIdToDelete('@item.Id');"><i class="fa fa-times"></i></button></a></td>
+>>>>>>> c512f9477fc46f8d77f350d9e1405d63131b9f74
+                                    <td><a class="btn btn-success btn-sm" style="font-size:10px;" href="#">USSD</a></td>
+                                </tr>
+
+                            }
+                        </tbody>
+                    </table>
+<<<<<<< HEAD
+                    <form action="/SIM/AddUpdateSim" method="get">
+=======
+                    <form action="/SIM/AddUpdate" method="get">
+>>>>>>> c512f9477fc46f8d77f350d9e1405d63131b9f74
+                        <button class="btn btn-primary btn-addon btn-sm" type="submit">
+                            <i class="fa fa-plus"></i>
+                            سیم کارت جدید
+                        </button>
+
+<<<<<<< HEAD
+    
+=======
+
+>>>>>>> c512f9477fc46f8d77f350d9e1405d63131b9f74
+
+                    </form>
+                </div>
+            </section>
+
+
+
+        </div>
+
+    </div>
+
+
+<<<<<<< HEAD
+
+=======
+>>>>>>> c512f9477fc46f8d77f350d9e1405d63131b9f74
+}
+
+
+

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fab00622de574605a42f334392dc8da4" Name="Diagram1">
+        <EntityTypeShape EntityType="SMSPortalDBModel.Company" Width="1.5" PointX="0.75" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SMSPortalDBModel.Contact" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SMSPortalDBModel.Inbox" Width="1.5" PointX="7.5" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SMSPortalDBModel.Message" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SMSPortalDBModel.Phone" Width="1.5" PointX="5.25" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SMSPortalDBModel.Queue_Phone" Width="1.5" PointX="8.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SMSPortalDBModel.Queue" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SMSPortalDBModel.SendBox_Phone" Width="1.5" PointX="7.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SMSPortalDBModel.SendBox" Width="1.5" PointX="5.25" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="SMSPortalDBModel.SIM_User" Width="1.5" PointX="6" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SMSPortalDBModel.SIM" Width="1.5" PointX="5.25" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SMSPortalDBModel.sysdiagram" Width="1.5" PointX="7.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SMSPortalDBModel.User" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <AssociationConnector Association="SMSPortalDBModel.FK_Contact_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="SMSPortalDBModel.FK_Phone_Contact" ManuallyRouted="false" />
+        <AssociationConnector Association="SMSPortalDBModel.FK_Inbox_SIM" ManuallyRouted="false" />
+        <AssociationConnector Association="SMSPortalDBModel.FK_Queue_Message" ManuallyRouted="false" />
+        <AssociationConnector Association="SMSPortalDBModel.FK_SendBox_Message" ManuallyRouted="false" />
+        <AssociationConnector Association="SMSPortalDBModel.FK_Queue_Phone_Phone" ManuallyRouted="false" />
+        <AssociationConnector Association="SMSPortalDBModel.FK_SendBox_Phone_Phone" ManuallyRouted="false" />
+        <AssociationConnector Association="SMSPortalDBModel.FK_Queue_Phone_Queue" ManuallyRouted="false" />
+        <AssociationConnector Association="SMSPortalDBModel.FK_Queue_User" ManuallyRouted="false" />
+        <AssociationConnector Association="SMSPortalDBModel.FK_SendBox_Queue" ManuallyRouted="false" />
+        <AssociationConnector Association="SMSPortalDBModel.FK_SendBox_Phone_SendBox" ManuallyRouted="false" />
+        <AssociationConnector Association="SMSPortalDBModel.FK_SendBox_Phone_SIM" ManuallyRouted="false" />
+        <AssociationConnector Association="SMSPortalDBModel.FK_SIM_User_SIM" ManuallyRouted="false" />
+        <AssociationConnector Association="SMSPortalDBModel.FK_SIM_User_User" ManuallyRouted="false" />
+        <AssociationConnector Association="SMSPortalDBModel.FK_User_User" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

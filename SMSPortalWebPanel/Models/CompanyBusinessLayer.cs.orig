@@ -1,0 +1,181 @@
+﻿using SMSPortalDBDataLibrary;
+<<<<<<< HEAD
+using System;
+using System.Collections.Generic;
+=======
+using SMSPortalWebPanel.ViewModels;
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+>>>>>>> c512f9477fc46f8d77f350d9e1405d63131b9f74
+using System.Linq;
+using System.Web;
+
+namespace SMSPortalWebPanel.Models
+{
+    public class CompanyBusinessLayer
+    {
+
+<<<<<<< HEAD
+        public List<Company> getAllCompanies()
+=======
+        public List<Company> getCompanies()
+>>>>>>> c512f9477fc46f8d77f350d9e1405d63131b9f74
+        {
+            try
+            {
+                using (SMSPortalDBEntities db = new SMSPortalDBEntities())
+                {
+                    return db.Companies.Select(x => x).ToList();
+                }
+            }
+            catch { }
+            return null;
+        }
+
+<<<<<<< HEAD
+=======
+        public List<CompanyViewModel> GetCompanyVMs()
+        {
+            try
+            {
+                List<CompanyViewModel> lstCompanyVM = new List<CompanyViewModel>();
+                using (SMSPortalDBEntities db = new SMSPortalDBEntities())
+                {
+                    var q = (from x in db.Companies select x).ToList();
+
+                    foreach (Company company in q)
+                    {
+                        CompanyViewModel CompanyVM = new CompanyViewModel()
+                        {
+                            Id = company.TFId,
+                            Name = company.TFName,
+                            Address = company.TFAddress != null ? company.TFAddress : "-",
+                            Number = company.TFPhone != null ? company.TFPhone : "-"
+
+                        };
+                        lstCompanyVM.Add(CompanyVM);
+
+                    }
+
+                    return lstCompanyVM;
+
+                }
+            }
+            catch (Exception e)
+            {
+            }
+            return null;
+        }
+
+
+        public bool addNewCompany(CompanyViewModel companyViewModel)
+        {
+            using (SMSPortalDBEntities db = new SMSPortalDBEntities())
+                try
+                {
+                    Company Company = new Company()
+                    {
+                        TFId = Guid.NewGuid(),
+                        TFName = companyViewModel.Name,
+                        TFAddress = companyViewModel.Address,
+                        TFPhone = companyViewModel.Number,
+
+                    };
+
+                    db.Companies.Add(Company);
+                    db.SaveChanges();
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    return false;
+
+                }
+
+        }
+
+        public bool updateCompany(CompanyViewModel companyViewModel)
+        {
+            using (SMSPortalDBEntities db = new SMSPortalDBEntities())
+            {
+                try
+                {
+                    Company Company = getCompanyById(companyViewModel.Id);
+                    if (Company != null)
+                    {
+                        Company.TFName = companyViewModel.Name;
+                        Company.TFAddress = companyViewModel.Address;
+                        Company.TFPhone = companyViewModel.Number;
+                        db.Entry(Company).State = EntityState.Modified;
+                        db.SaveChanges();
+                        return true;
+                    }
+                    else
+                        return false;
+                }
+                catch (Exception e)
+                {
+                    return false;
+                }
+
+            }
+        }
+
+
+        public Company getCompanyById(Guid id)
+        {
+
+            using (SMSPortalDBEntities db = new SMSPortalDBEntities())
+            {
+                Company Company = db.Companies.FirstOrDefault(x => x.TFId == id);
+                return Company;
+            }
+
+        }
+
+        public void deleteCompanyById(Guid _id)
+        {
+            try
+            {
+                using (SMSPortalDBEntities db = new SMSPortalDBEntities())
+                {
+                    Company Company = db.Companies.FirstOrDefault(x => x.TFId == _id);
+                    db.Companies.Remove(Company);
+
+                    db.SaveChanges();
+                }
+            }
+            catch { }
+        }
+
+        public object getCompanyContacts(Guid _id)
+        {
+
+            try
+            {
+                using (SMSPortalDBEntities db = new SMSPortalDBEntities())
+                {
+
+                    var q = (from p in db.Phones
+                             join c in db.Contacts
+                             on p.TFContact_Id equals c.TFId
+                             where c.TFCompany_Id == _id
+                             select new
+                             {
+                                 Name = c.TFName + " " + c.TFFamily,
+                                 Number = p.TFNumber
+                             }).ToList();
+
+                    return q.ToList();
+
+                }
+            }
+            catch { }
+            return null;
+        }
+
+
+>>>>>>> c512f9477fc46f8d77f350d9e1405d63131b9f74
+    }
+}

@@ -1,0 +1,190 @@
+﻿
+@using SMSPortalWebPanel.ViewModels
+@model UserManagementAddUpdateViewModel
+@section TitleSection{
+    ویرایش کاربر
+}
+@section ActiveUserManagement{active}
+@section HeaderSection{
+
+
+    <link href="~/Content/datatables/dataTables.bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/plugins/datatables/jquery.dataTables.js"></script>
+    <script src="~/Scripts/plugins/datatables/dataTables.bootstrap.js"></script>
+    <script src="~/Scripts/plugins/datatables/fnReloadAjax.js"></script>
+
+    <script src="~/Scripts/jquery.validate.js"></script>
+
+
+
+    <script type="text/javascript">
+
+        var SimTable;
+
+        $(document).ready(function () {
+            $('#SimDT').dataTable();
+        });
+
+
+        function addSim() {
+
+            var isAdded = false;
+            var id = $('#SimDRP').val();
+            if (id != '0') {
+                var number = $('#SimDRP option:selected').text();
+                $('#SimDT').dataTable().$('td').each(function (index, rowhtml) {
+                    if (rowhtml.innerHTML.includes(number)) {
+                        isAdded = true;
+                    }
+
+                });
+                if (!isAdded) {
+                    var count = $('#SimDT').dataTable().api().rows().count();
+                    $('#SimDT').dataTable().api().destroy();
+
+                    var body = "<tr>" +
+                                    "<td style='display:none'><input type='hidden' value='" + id + "' name='SelectedSims[" + count + "].SimId' /></td>" +
+                                    "<td><input type='hidden' name='SelectedSims[" + count + "].Number' value='" + number + "' />" + number + "</td>" +
+                                    "<td><button type='button' class='btn btn-default btn-xs' onclick='removeSim(this)'><i class='fa fa-times'></i></button></td>" +
+                                 "</tr>";
+                    $("#simBody").append(body);
+                    $('#SimDT').dataTable();
+
+
+                }
+            }
+        }
+
+        function goBack() {
+            var url = '@Url.Action("Index", "UserManagement")';
+            window.location.href = url;
+            return false;
+        }
+
+        function removeSim(e) {
+            try {
+                e.closest('tr').remove();
+            }
+            catch (Err) {
+            }
+        }
+
+
+    </script>
+}
+@section ContentBody{
+    <div class="row">
+        <form role="form" action="/UserManagement/Save" method="post">
+
+            <div class="col-lg-4">
+                <section class="panel">
+                    <header class="panel-heading">
+                        اطلاعات کاربر
+                    </header>
+                    <div class="panel-body">
+
+                        <div class="form-group">
+                            <label>نام کاربری:</label>
+                            <input type="text" class="form-control" id="txtFamily" name="@Html.NameFor(m => Model._UserName).ToString()" placeholder="نام کاربری را وارد کنید" value="@Model._UserName">
+                            <p class="help-block">@Html.ValidationMessageFor(m => Model._UserName)</p>
+                        </div>
+                        <div class="form-group">
+                            <label>نام:</label>
+                            <input type="text" class="form-control" id="txtName" name="@Html.NameFor(m => Model.Name).ToString()" placeholder="نام را وارد کنید" value="@Model.Name">
+                            <p class="help-block">@Html.ValidationMessageFor(m => Model.Name)</p>
+                        </div>
+                        <div class="form-group">
+                            <label>نام خانوادگی:</label>
+                            <input type="text" class="form-control" id="txtFamily" name="@Html.NameFor(m => Model.Family).ToString()" placeholder="نام خانوادگی را وارد کنید" value="@Model.Family">
+                            <p class="help-block">@Html.ValidationMessageFor(m => Model.Family)</p>
+                        </div>
+                        <div class="form-group">
+                            <label>رمز عبور </label>
+                            <input type="password" class="form-control" name="@Html.NameFor(m => Model.Password).ToString()" placeholder="رمز عبور را وارد کنید" value="@Model.Password">
+                            <p class="help-block">@Html.ValidationMessageFor(m => Model.Password)</p>
+                        </div>
+                        <div class="form-group">
+                            <label>تکرار رمز عبور </label>
+                            <input type="password" class="form-control" id="txtFamily" name="@Html.NameFor(m => Model.Re_Password).ToString()" placeholder="رمز عبور را مجددا وارد کنید" value="@Model.Re_Password">
+                            <p class="help-block">@Html.ValidationMessageFor(m => Model.Re_Password)</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label>ادمین</label>
+                            @Html.CheckBoxFor(x => x.isAdmin, new { @checked = "checked" })
+                        </div>
+
+                        <button type="submit" class="btn btn-info" name="@Html.NameFor(m => Model.Id).ToString()" value="@Model.Id">ثبت</button>
+                        <button type="submit" class="btn btn-danger" onclick="return goBack();"> بازگشت </button>
+                        <p class="help-block">@( Model._Result != null ? Model._Result : "")</p>
+                    </div>
+
+                </section>
+
+            </div>
+
+            <div class="col-lg-5">
+                <section class="panel">
+                    <header class="panel-heading">
+                        دسترسی سیم کارت ها
+                    </header>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label for="SimDRP">سیم کارت ها:</label>
+                            <select id="SimDRP" name="SimDRP">
+                                <option value="0">سیم کارت مورد نظر خود را انتخاب کنید</option>;
+                                @if (Model.SimList != null && Model.SimList.Count > 0)
+                                {
+                                    foreach (SelectListItem item in Model.SimList)
+                                    {
+                                        <option value="@item.Value">@item.Text</option>;
+                                    }
+                                }
+                            </select>
+                            <button type="button" class="btn btn-primary btn-addon btn-sm" onclick="addSim();"><i class="fa fa-plus"></i></button>
+
+                        </div>
+
+                        <div class="panel-body table-responsive">
+
+
+                            <table id="SimDT" class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th style="display:none;"></th>
+                                        <th>شماره</th>
+                                        <th>حذف</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="simBody">
+                                    @{
+                                        if (Model.SelectedSims != null && Model.SelectedSims.Count > 0)
+                                        {
+                                            int i = 0;
+                                            foreach (User_Sim item in Model.SelectedSims)
+                                            {
+                                                <tr>
+                                                    <td style="display:none"><input type="hidden" value="@item.SimId" name="SelectedSims[@i].SimId" /></td>
+                                                    <td><input type="hidden" name="SelectedSims[@i].Number" value="@item.Number" />@item.Number</td>
+                                                    <td><button type="button" class="btn btn-default btn-xs" onclick="removeSim(this)"><i class="fa fa-times"></i></button></td>
+                                                </tr>
+
+                                            }
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+
+                        </div>
+
+
+                    </div>
+                </section>
+
+            </div>
+        </form>
+
+    </div>
+
+}
+
